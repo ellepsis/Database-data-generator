@@ -6,10 +6,10 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class WorkDate{
-    long id;
-    long EmployeeId;
-    Date startDate;
-    Date endDate;
+    private  long id;
+    private   long EmployeeId;
+    private  Date startDate;
+    private  Date endDate;
 
     public long getId() {
         return id;

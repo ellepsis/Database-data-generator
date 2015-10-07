@@ -6,18 +6,18 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class Employee {
-    long id;
-    String firstName;
-    String secondName;
-    String middleName;
-    Character gender;
-    String position;
-    Date birthdayDate;
-    String passportNumber;
-    long addressId;
-    Date employmentDate;
-    Date dismissalDate;
-    long userId;
+    private long id;
+    private String firstName;
+    private String secondName;
+    private String middleName;
+    private Character gender;
+    private String position;
+    private Date birthdayDate;
+    private String passportNumber;
+    private long addressId;
+    private Date employmentDate;
+    private Date dismissalDate;
+    private long userId;
 
     public long getId() {
         return id;

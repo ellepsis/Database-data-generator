@@ -4,8 +4,8 @@ package Entity;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class Dispatcher {
-    long id;
-    long employeeId;
+    private long id;
+    private long employeeId;
 
     public long getEmployeeId() {
         return employeeId;

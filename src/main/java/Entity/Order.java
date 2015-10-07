@@ -6,19 +6,19 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class Order {
-    long id;
-    long statusOrderId;
-    long dispatcherId;
-    long driverId;
-    Date date;
-    Date preorderDate;
-    long startPointId;
-    long endPointId;
-    long carId;
-    long clientId;
-    long phoneId;
-    long cost;
-    String comment;
+    private long id;
+    private long statusOrderId;
+    private long dispatcherId;
+    private long driverId;
+    private Date date;
+    private Date preorderDate;
+    private long startPointId;
+    private long endPointId;
+    private long carId;
+    private long clientId;
+    private long phoneId;
+    private long cost;
+    private String comment;
 
     public long getId() {
         return id;

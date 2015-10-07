@@ -4,10 +4,10 @@ package Entity;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class User {
-    long id;
-    String userName;
-    String Password;
-    long permissionsTypeId;
+    private long id;
+    private String userName;
+    private String Password;
+    private  long permissionsTypeId;
 
     public long getId() {
         return id;

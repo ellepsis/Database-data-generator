@@ -4,10 +4,10 @@ package Entity;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class EmployeePhone {
-    long id;
-    long EmployeeId;
-    String phoneNumber;
-    String description;
+    private long id;
+    private long EmployeeId;
+    private String phoneNumber;
+    private String description;
 
     public long getId() {
         return id;

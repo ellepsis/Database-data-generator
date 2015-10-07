@@ -4,8 +4,8 @@ package Entity;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class StatusOrder {
-    long Id;
-    String name;
+    private long Id;
+    private String name;
 
     public long getId() {
         return Id;

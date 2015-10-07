@@ -6,11 +6,11 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class Driver {
-    long id;
-    long employeeId;
-    String driverLicenseNumber;
-    String categories;
-    Date experience;
+    private long id;
+    private long employeeId;
+    private String driverLicenseNumber;
+    private  String categories;
+    private Date experience;
 
     public long getId() {
         return id;
