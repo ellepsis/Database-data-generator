@@ -5,6 +5,7 @@ import com.ellepsis.databaseGenerator.Entity.ClientType;
 import com.ellepsis.databaseGenerator.Repository.ClientTypeRepository;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -44,15 +45,35 @@ public class ClientsGenerator {
         );
     }
 
-    public ArrayList<Client> generateClients(ClientTypeRepository clientTypeRepository) throws Exception {
+    public ArrayList<Client> generateClients(ClientTypeRepository clientTypeRepository, int count ) throws Exception {
         List<ClientType> clientTypes = clientTypeRepository.findAll();
         clientTypes.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
-        ArrayList<Client> clients = new ArrayList<>(6000);
-        for (int i = 0; i < 3; i++) {
-            clients.addAll(Arrays.asList(generateFemaleClients(clientTypes)));
-            clients.addAll(Arrays.asList(generateMaleClients(clientTypes)));
+
+        ArrayList<Client> allClients = new ArrayList<>(count);
+
+        Client[] femaleClients = generateFemaleClients(clientTypes);
+        Client[] maleClients   = generateMaleClients(clientTypes);
+        int femaleN = 0;
+        int maleN   = 0;
+        for (int i = 0; i < count; i++) {
+            if (random.nextInt(10) > 4) { //Male
+                if (maleClients.length == maleN ) {
+                    maleClients = generateMaleClients(clientTypes);
+                    maleN = 0;
+                }
+                allClients.add( maleClients[maleN] );
+                maleN++;
+            }
+            else {                        //famale
+                if (femaleClients.length == femaleN ) {
+                    femaleClients = generateFemaleClients(clientTypes);
+                    femaleN = 0;
+                }
+                allClients.add( maleClients[femaleN] );
+                femaleN++;
+            }
         }
-        return clients;
+        return allClients;
     }
 
     public Client[] generateFemaleClients(List<ClientType> clientTypes) throws URISyntaxException {
@@ -63,7 +84,7 @@ public class ClientsGenerator {
             if (client.getMiddleName() != null)
                 client.setMiddleName(client.getMiddleName().concat("ovna"));
             client.setGender('F');
-            client.setClientType(generateClientType(clientTypes));
+            client.setClientType(getRandomClientType(clientTypes));
         }
         return clients;
     }
@@ -76,12 +97,12 @@ public class ClientsGenerator {
             if (client.getMiddleName() != null)
                 client.setMiddleName(client.getMiddleName().concat("ovich"));
             client.setGender('M');
-            client.setClientType(generateClientType(clientTypes));
+            client.setClientType(getRandomClientType(clientTypes));
         }
         return clients;
     }
 
-    private ClientType generateClientType(List<ClientType> clientTypes){
+    private ClientType getRandomClientType(List<ClientType> clientTypes){
         int rNum = random.nextInt(10);
         if (rNum < 1) {
             return clientTypes.get(0);
