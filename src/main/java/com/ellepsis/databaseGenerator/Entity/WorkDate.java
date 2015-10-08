@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 public class WorkDate extends GenericEntity{
-    private   Long EmployeeId;
+    private  Long EmployeeId;
     private  Date startDate;
     private  Date endDate;
 
