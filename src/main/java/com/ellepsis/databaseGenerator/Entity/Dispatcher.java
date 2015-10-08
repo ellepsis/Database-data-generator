@@ -14,15 +14,15 @@ public class Dispatcher extends GenericEntity{
     @Column(name = "Id")
     private Long id;
 
-    @Column(name = "EmployeeId")
-    private Long employeeId;
+    @Column(name = "Employee_ID")
+    private Employee employee;
 
-    public Long getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public Long getId() {

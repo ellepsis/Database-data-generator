@@ -76,7 +76,7 @@ public class ClientsGenerator {
         return allClients;
     }
 
-    public Client[] generateFemaleClients(List<ClientType> clientTypes) throws URISyntaxException {
+    private Client[] generateFemaleClients(List<ClientType> clientTypes) throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
         URI uri = new URI("https://www.mockaroo.com/d8c06b60/download?count=1000&key=bfda25a0");
         Client[] clients = restTemplate.getForObject(uri, Client[].class);
