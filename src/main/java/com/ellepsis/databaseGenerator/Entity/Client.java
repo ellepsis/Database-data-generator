@@ -46,7 +46,7 @@ public class Client extends GenericEntity{
         return middleName;
     }
 
-    public void setMiddleName(String middleName) {
+    public String setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
