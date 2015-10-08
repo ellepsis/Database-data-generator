@@ -30,7 +30,7 @@ public class ClientsGenerator {
 
         ClientType clientType3 = new ClientType();
         clientType3.setDescription("new");
-        clientType3.setDiscount(1);
+        clientType3.setDiscount(0);
 
         ClientType clientType4 = new ClientType();
         clientType4.setDescription("free");
@@ -44,34 +44,55 @@ public class ClientsGenerator {
         );
     }
 
-    public void generateFemaleClients(ClientTypeRepository clientTypeRepository) throws URISyntaxException {
+    public ArrayList<Client> generateClients(ClientTypeRepository clientTypeRepository) throws Exception {
         List<ClientType> clientTypes = clientTypeRepository.findAll();
         clientTypes.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
+        ArrayList<Client> clients = new ArrayList<>(6000);
+        for (int i = 0; i < 3; i++) {
+            clients.addAll(Arrays.asList(generateFemaleClients(clientTypes)));
+            clients.addAll(Arrays.asList(generateMaleClients(clientTypes)));
+        }
+        return clients;
+    }
+
+    public Client[] generateFemaleClients(List<ClientType> clientTypes) throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
         URI uri = new URI("https://www.mockaroo.com/d8c06b60/download?count=1000&key=bfda25a0");
         Client[] clients = restTemplate.getForObject(uri, Client[].class);
-        for(Client client : clients){
+        for (Client client : clients) {
             if (client.getMiddleName() != null)
                 client.setMiddleName(client.getMiddleName().concat("ovna"));
             client.setGender('F');
-            int rnum = random.nextInt(10);
+            client.setClientType(generateClientType(clientTypes));
+        }
+        return clients;
+    }
 
-            if (rnum<1) {
-                client.setClientType(clientTypes.get(0));
-                continue;
-            }
-            if (rnum<5) {
-                client.setClientType(clientTypes.get(1));
-                continue;
-            }
-            if (rnum<7){
-                client.setClientType(clientTypes.get(2));
-                continue;
-            }
-            else {
-                client.setClientType(clientTypes.get(3));
-                continue;
-            }
+    private Client[] generateMaleClients(List<ClientType> clientTypes) throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        URI uri = new URI("https://www.mockaroo.com/b4fd3550/download?count=1000&key=bfda25a0");
+        Client[] clients = restTemplate.getForObject(uri, Client[].class);
+        for (Client client : clients) {
+            if (client.getMiddleName() != null)
+                client.setMiddleName(client.getMiddleName().concat("ovich"));
+            client.setGender('M');
+            client.setClientType(generateClientType(clientTypes));
+        }
+        return clients;
+    }
+
+    private ClientType generateClientType(List<ClientType> clientTypes){
+        int rNum = random.nextInt(10);
+        if (rNum < 1) {
+            return clientTypes.get(0);
+        }
+        if (rNum < 5) {
+            return clientTypes.get(1);
+        }
+        if (rNum < 7) {
+            return clientTypes.get(2);
+        } else {
+            return clientTypes.get(3);
         }
     }
 }
