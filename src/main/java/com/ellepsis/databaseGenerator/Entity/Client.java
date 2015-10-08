@@ -15,6 +15,8 @@ public class Client extends GenericEntity{
     private String secondName;
     @Column(name = "Middle_Name")
     private String middleName;
+    @Column
+    private Character gender;
     @ManyToOne(targetEntity = ClientType.class)
     @JoinColumn(name = "Client_Type_ID", nullable = false)
     private ClientType clientType;
@@ -43,11 +45,19 @@ public class Client extends GenericEntity{
         this.middleName = middleName;
     }
 
-    public ClientType getClientTypeId() {
+    public Character getGender() {
+        return gender;
+    }
+
+    public void setGender(Character gender) {
+        this.gender = gender;
+    }
+
+    public ClientType getClientType() {
         return clientType;
     }
 
-    public void setClientTypeId(ClientType clientType) {
+    public void setClientType(ClientType clientType) {
         this.clientType = clientType;
     }
 }

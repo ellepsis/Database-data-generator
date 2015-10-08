@@ -34,7 +34,7 @@ public class Application implements CommandLineRunner {
         firstClient.setFirstName("Ilya");
         firstClient.setSecondName("Mihaylov");
         firstClient.setMiddleName("Eduardovich");
-        firstClient.setClientTypeId(firstType);
+        firstClient.setClientType(firstType);
 
         clientRepository.save(firstClient);
 
