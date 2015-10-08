@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Created by vladislav on 30.09.15.
@@ -38,5 +42,12 @@ public class Application implements CommandLineRunner {
 
         clientRepository.save(firstClient);
 
+    }
+
+    public void generateFemaleClients() throws URISyntaxException {
+        RestTemplate restTemplate = new RestTemplate();
+        URI uri = new URI("https://www.mockaroo.com/d8c06b60/download?count=1000&key=bfda25a0");
+        Client[] clients = restTemplate.getForObject(uri, Client[].class);
+        for(Client client : clients)
     }
 }
