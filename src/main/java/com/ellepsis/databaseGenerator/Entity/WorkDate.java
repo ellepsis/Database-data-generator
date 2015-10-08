@@ -1,29 +1,20 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class WorkDate{
-    private  long id;
-    private   long EmployeeId;
+public class WorkDate extends GenericEntity{
+    private   Long EmployeeId;
     private  Date startDate;
     private  Date endDate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getEmployeeId() {
+    public Long getEmployeeId() {
         return EmployeeId;
     }
 
-    public void setEmployeeId(long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         EmployeeId = employeeId;
     }
 

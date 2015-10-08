@@ -1,21 +1,12 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class User {
-    private long id;
+public class User extends GenericEntity{
     private String userName;
     private String Password;
-    private  long permissionsTypeId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private  Long permissionsTypeId;
 
     public String getUserName() {
         return userName;
@@ -33,11 +24,11 @@ public class User {
         Password = password;
     }
 
-    public long getPermissionsTypeId() {
+    public Long getPermissionsTypeId() {
         return permissionsTypeId;
     }
 
-    public void setPermissionsTypeId(long permissionsTypeId) {
+    public void setPermissionsTypeId(Long permissionsTypeId) {
         this.permissionsTypeId = permissionsTypeId;
     }
 

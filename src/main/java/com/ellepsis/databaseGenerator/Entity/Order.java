@@ -1,54 +1,45 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class Order {
-    private long id;
-    private long statusOrderId;
-    private long dispatcherId;
-    private long driverId;
+public class Order extends GenericEntity{
+    private Long statusOrderId;
+    private Long dispatcherId;
+    private Long driverId;
     private Date date;
     private Date preorderDate;
-    private long startPointId;
-    private long endPointId;
-    private long carId;
-    private long clientId;
-    private long phoneId;
-    private long cost;
+    private Long startPointId;
+    private Long endPointId;
+    private Long carId;
+    private Long clientId;
+    private Long phoneId;
+    private Long cost;
     private String comment;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getStatusOrderId() {
+    public Long getStatusOrderId() {
         return statusOrderId;
     }
 
-    public void setStatusOrderId(long statusOrderId) {
+    public void setStatusOrderId(Long statusOrderId) {
         this.statusOrderId = statusOrderId;
     }
 
-    public long getDispatcherId() {
+    public Long getDispatcherId() {
         return dispatcherId;
     }
 
-    public void setDispatcherId(long dispatcherId) {
+    public void setDispatcherId(Long dispatcherId) {
         this.dispatcherId = dispatcherId;
     }
 
-    public long getDriverId() {
+    public Long getDriverId() {
         return driverId;
     }
 
-    public void setDriverId(long driverId) {
+    public void setDriverId(Long driverId) {
         this.driverId = driverId;
     }
 
@@ -68,51 +59,51 @@ public class Order {
         this.preorderDate = preorderDate;
     }
 
-    public long getStartPointId() {
+    public Long getStartPointId() {
         return startPointId;
     }
 
-    public void setStartPointId(long startPointId) {
+    public void setStartPointId(Long startPointId) {
         this.startPointId = startPointId;
     }
 
-    public long getEndPointId() {
+    public Long getEndPointId() {
         return endPointId;
     }
 
-    public void setEndPointId(long endPointId) {
+    public void setEndPointId(Long endPointId) {
         this.endPointId = endPointId;
     }
 
-    public long getCarId() {
+    public Long getCarId() {
         return carId;
     }
 
-    public void setCarId(long carId) {
+    public void setCarId(Long carId) {
         this.carId = carId;
     }
 
-    public long getClientId() {
+    public Long getClientId() {
         return clientId;
     }
 
-    public void setClientId(long clientId) {
+    public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 
-    public long getPhoneId() {
+    public Long getPhoneId() {
         return phoneId;
     }
 
-    public void setPhoneId(long phoneId) {
+    public void setPhoneId(Long phoneId) {
         this.phoneId = phoneId;
     }
 
-    public long getCost() {
+    public Long getCost() {
         return cost;
     }
 
-    public void setCost(long cost) {
+    public void setCost(Long cost) {
         this.cost = cost;
     }
 

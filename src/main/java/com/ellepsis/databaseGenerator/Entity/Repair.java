@@ -1,31 +1,22 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
-public class Repair {
-    private long id;
-    private long carId;
+public class Repair extends GenericEntity{
+    private Long carId;
     private Date startDate;
     private Date endDate;
-    private long cost;
+    private Long cost;
     private String place;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getCarId() {
+    public Long getCarId() {
         return carId;
     }
 
-    public void setCarId(long carId) {
+    public void setCarId(Long carId) {
         this.carId = carId;
     }
 
@@ -45,11 +36,11 @@ public class Repair {
         this.endDate = endDate;
     }
 
-    public long getCost() {
+    public Long getCost() {
         return cost;
     }
 
-    public void setCost(long cost) {
+    public void setCost(Long cost) {
         this.cost = cost;
     }
 

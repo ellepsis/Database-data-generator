@@ -1,30 +1,30 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class Driver {
-    private long id;
-    private long employeeId;
+public class Driver extends GenericEntity{
+    private Long id;
+    private Long employeeId;
     private String driverLicenseNumber;
     private  String categories;
     private Date experience;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 

@@ -1,4 +1,4 @@
-package ru.extimus.helper;
+package com.ellepsis.databaseGenerator.helper;
 
 /**
  * Created by vladislav on 01.10.15.

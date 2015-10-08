@@ -1,12 +1,11 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.time.Year;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
-public class Car {
-    private long Id;
+public class Car extends GenericEntity{
     private String brand;
     private String model;
     private String governmentNumber;
@@ -14,15 +13,7 @@ public class Car {
     private String vehicleRegistrationCertificate;
     private String insuranceNumber;
     private Year releaseYear;
-    private long statusCarId;
-
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
-    }
+    private Long statusCarId;
 
     public String getBrand() {
         return brand;
@@ -80,11 +71,11 @@ public class Car {
         this.releaseYear = releaseYear;
     }
 
-    public long getStatusCarId() {
+    public Long getStatusCarId() {
         return statusCarId;
     }
 
-    public void setStatusCarId(long statusCarId) {
+    public void setStatusCarId(Long statusCarId) {
         this.statusCarId = statusCarId;
     }
 }

@@ -1,7 +1,6 @@
-package EntityTables;
+package com.ellepsis.databaseGenerator.EntityTables;
 
-import Entity.Address;
-import javafx.scene.effect.Reflection;
+import com.ellepsis.databaseGenerator.Entity.Address;
 
 import java.util.ArrayList;
 import java.util.List;

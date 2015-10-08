@@ -1,27 +1,18 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class EmployeePhone {
-    private long id;
-    private long EmployeeId;
+public class EmployeePhone extends GenericEntity{
+    private Long EmployeeId;
     private String phoneNumber;
     private String description;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getEmployeeId() {
+    public Long getEmployeeId() {
         return EmployeeId;
     }
 
-    public void setEmployeeId(long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         EmployeeId = employeeId;
     }
 

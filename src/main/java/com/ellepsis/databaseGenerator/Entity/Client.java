@@ -1,22 +1,23 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
+
+import javax.persistence.*;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class Client {
-    private long id;
+
+@Entity
+public class Client extends GenericEntity{
+
+    @Column(name = "First_Name", nullable = false)
     private String firstName;
+    @Column(name = "Second_Name", nullable = false)
     private String secondName;
+    @Column(name = "Middle_Name")
     private String middleName;
-    private long clientTypeId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    @ManyToOne(targetEntity = ClientType.class)
+    @JoinColumn(name = "Client_Type_ID", nullable = false)
+    private ClientType clientType;
 
     public String getFirstName() {
         return firstName;
@@ -42,11 +43,11 @@ public class Client {
         this.middleName = middleName;
     }
 
-    public long getClientTypeId() {
-        return clientTypeId;
+    public ClientType getClientTypeId() {
+        return clientType;
     }
 
-    public void setClientTypeId(long clientTypeId) {
-        this.clientTypeId = clientTypeId;
+    public void setClientTypeId(ClientType clientType) {
+        this.clientType = clientType;
     }
 }

@@ -1,12 +1,11 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
-public class Employee {
-    private long id;
+public class Employee extends GenericEntity{
     private String firstName;
     private String secondName;
     private String middleName;
@@ -14,18 +13,10 @@ public class Employee {
     private String position;
     private Date birthdayDate;
     private String passportNumber;
-    private long addressId;
+    private Long addressId;
     private Date employmentDate;
     private Date dismissalDate;
-    private long userId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private Long userId;
 
     public String getFirstName() {
         return firstName;
@@ -83,11 +74,11 @@ public class Employee {
         this.passportNumber = passportNumber;
     }
 
-    public long getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(long addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 
@@ -107,11 +98,11 @@ public class Employee {
         this.dismissalDate = dismissalDate;
     }
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 }

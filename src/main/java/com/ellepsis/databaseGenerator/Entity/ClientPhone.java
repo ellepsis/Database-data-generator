@@ -1,26 +1,17 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
-public class ClientPhone {
-    private long id;
-    private long clientId;
+public class ClientPhone extends GenericEntity{
+    private Long clientId;
     private String phoneNumber;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getClientId() {
+    public Long getClientId() {
         return clientId;
     }
 
-    public void setClientId(long clientId) {
+    public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 

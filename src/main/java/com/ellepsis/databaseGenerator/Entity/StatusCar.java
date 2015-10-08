@@ -1,19 +1,10 @@
-package Entity;
+package com.ellepsis.databaseGenerator.Entity;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
-public class StatusCar {
-    private long id;
+public class StatusCar extends GenericEntity{
     private String description;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;
