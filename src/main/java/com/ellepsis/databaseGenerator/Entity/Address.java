@@ -11,12 +11,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Address")
 public class Address extends GenericEntity{
-    @Column
+
+    @Column(name = "City")
     private String city;
+
+    @Column(name = "Street")
     private String street;
+
     @Column(name = "House_Number")
     private String houseNumber;
+
+    @Column(name = "Porch")
     private String porch;
+
+    @Column(name = "Other_Address")
     private String otherAddress;
 
     public String getCity() {

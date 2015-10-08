@@ -8,8 +8,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Client_Type")
 public class ClientType extends GenericEntity{
+
+    @Column(name = "Description")
     private String description;
-    @Column(nullable = false)
+
+    @Column(name = "Discount", nullable = false)
     private float discount;
 
     public String getDescription() {

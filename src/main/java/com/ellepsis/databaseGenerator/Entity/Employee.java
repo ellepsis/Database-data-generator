@@ -1,21 +1,48 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
+@Entity
+@Table(name = "Employee")
 public class Employee extends GenericEntity{
+
+    @Column(name = "First_Name")
     private String firstName;
+
+    @Column(name = "Second_Name")
     private String secondName;
+
+    @Column(name = "Middle_Name")
     private String middleName;
+
+    @Column(name = "Gender")
     private Character gender;
+
+    @Column(name = "Position")
     private String position;
+
+    @Column(name = "Birthday_Date")
     private Date birthdayDate;
+
+    @Column(name = "Passport_Number")
     private String passportNumber;
+
+    @Column(name = "Address_Id")
     private Long addressId;
+
+    @Column(name = "Employment_Date")
     private Date employmentDate;
+
+    @Column(name = "Dismissal_Date")
     private Date dismissalDate;
+
+    @Column(name = "User_Id")
     private Long userId;
 
     public String getFirstName() {

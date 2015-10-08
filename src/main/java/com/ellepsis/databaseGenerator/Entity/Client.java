@@ -7,16 +7,21 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "Client")
 public class Client extends GenericEntity{
 
     @Column(name = "First_Name", nullable = false)
     private String firstName;
+
     @Column(name = "Second_Name", nullable = false)
     private String secondName;
+
     @Column(name = "Middle_Name")
     private String middleName;
-    @Column
+
+    @Column(name = "Gender")
     private Character gender;
+
     @ManyToOne(targetEntity = ClientType.class)
     @JoinColumn(name = "Client_Type_ID", nullable = false)
     private ClientType clientType;

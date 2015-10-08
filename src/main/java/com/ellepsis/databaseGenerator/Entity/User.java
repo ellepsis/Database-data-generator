@@ -1,11 +1,23 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
+@Entity
+@Table(name = "User")
 public class User extends GenericEntity{
+
+    @Column(name = "User_Name")
     private String userName;
+
+    @Column(name = "Password")
     private String Password;
+
+    @Column(name = "Permissions_Type_Id")
     private  Long permissionsTypeId;
 
     public String getUserName() {

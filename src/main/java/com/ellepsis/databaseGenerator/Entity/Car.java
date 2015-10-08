@@ -1,18 +1,39 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.Year;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
+@Entity
+@Table(name = "Car")
 public class Car extends GenericEntity{
+
+    @Column(name = "Brand")
     private String brand;
+
+    @Column(name = "Model")
     private String model;
+
+    @Column(name = "Government_Number")
     private String governmentNumber;
+
+    @Column(name = "VIN")
     private String VIN;
+
+    @Column(name = "Vehicle_Registration_Certificate")
     private String vehicleRegistrationCertificate;
+
+    @Column(name = "Insurance_Number")
     private String insuranceNumber;
+
+    @Column(name = "Release_Year")
     private Year releaseYear;
+
+    @Column(name = "Status_Car_Id")
     private Long statusCarId;
 
     public String getBrand() {

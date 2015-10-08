@@ -1,22 +1,51 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
+@Entity
+@Table(name = "Order")
 public class Order extends GenericEntity{
+
+    @Column(name = "Status_Order_Id")
     private Long statusOrderId;
+
+    @Column(name = "Dispatcher_Id")
     private Long dispatcherId;
+
+    @Column(name = "Driver_Id")
     private Long driverId;
+
+    @Column(name = "Date")
     private Date date;
+
+    @Column(name = "Preorder_Date")
     private Date preorderDate;
+
+    @Column(name = "Start_Point_Id")
     private Long startPointId;
+
+    @Column(name = "End_Point_Id")
     private Long endPointId;
+
+    @Column(name = "Car_Id")
     private Long carId;
+
+    @Column(name = "Client_Id")
     private Long clientId;
+
+    @Column(name = "Phone_Id")
     private Long phoneId;
+
+    @Column(name = "Cost")
     private Long cost;
+
+    @Column(name = "Comment")
     private String comment;
 
     public Long getStatusOrderId() {

@@ -1,15 +1,30 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
  */
+@Entity
+@Table(name = "Repair")
 public class Repair extends GenericEntity{
+
+    @Column(name = "Car_Id")
     private Long carId;
+
+    @Column(name = "Start_Date")
     private Date startDate;
+
+    @Column(name = "End_Date")
     private Date endDate;
+
+    @Column(name = "Cost")
     private Long cost;
+
+    @Column(name = "Place")
     private String place;
 
     public Long getCarId() {
