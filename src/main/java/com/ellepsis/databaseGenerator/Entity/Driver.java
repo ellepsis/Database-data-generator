@@ -11,10 +11,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Driver")
 public class Driver extends GenericEntity{
-
-    @Column(name = "Id")
-    private Long id;
-
     @Column(name = "Employee_Id")
     private Long employeeId;
 
@@ -26,14 +22,6 @@ public class Driver extends GenericEntity{
 
     @Column(name = "Experience")
     private Date experience;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getEmployeeId() {
         return employeeId;
