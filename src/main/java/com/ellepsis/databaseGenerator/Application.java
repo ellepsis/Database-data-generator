@@ -42,7 +42,7 @@ public class Application implements CommandLineRunner {
         clientTypeRepository.save(clientsGenerator.generateClientType());
         ObjectMapper mapper = new ObjectMapper();
         final CollectionType clientListType = mapper.getTypeFactory().constructCollectionType(List.class, Client.class);
-        File file = new File("C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator\\jsonGeneratedFiles\\Clients.json");
+        File file = new File("D:\\DatabaseGenerator\\jsonGeneratedFiles\\Clients.json");
         List<Client> users = mapper.readValue(file, clientListType);
         clientRepository.save(users);
     }
