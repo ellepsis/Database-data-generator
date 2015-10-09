@@ -49,7 +49,7 @@ public class ClientsGenerator {
         List<ClientType> clientTypes = clientTypeRepository.findAll();
         clientTypes.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         List<Client> allClients = new ArrayList<>(count);
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count/2; i++) {
             Client[] maleClients = generateMaleClients(clientTypes);
             Client[] femaleClients = generateFemaleClients(clientTypes);
             int maleClientNumber = 0;
