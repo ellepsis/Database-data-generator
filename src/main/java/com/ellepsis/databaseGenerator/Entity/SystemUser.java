@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
@@ -17,8 +15,9 @@ public class SystemUser extends GenericEntity{
     @Column(name = "Password")
     private String Password;
 
-    @Column(name = "Permissions_Type_Id")
-    private  Long permissionsTypeId;
+    @ManyToOne
+    @JoinColumn(name = "Permissions_Type_Id")
+    private PermissionType permissionsTypeId;
 
     public String getUserName() {
         return userName;
@@ -36,11 +35,11 @@ public class SystemUser extends GenericEntity{
         Password = password;
     }
 
-    public Long getPermissionsTypeId() {
+    public PermissionType getPermissionsTypeId() {
         return permissionsTypeId;
     }
 
-    public void setPermissionsTypeId(Long permissionsTypeId) {
+    public void setPermissionsTypeId(PermissionType permissionsTypeId) {
         this.permissionsTypeId = permissionsTypeId;
     }
 

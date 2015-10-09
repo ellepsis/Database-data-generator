@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
@@ -11,8 +9,9 @@ import javax.persistence.Table;
 @Table(name = "Employee_Phone")
 public class EmployeePhone extends GenericEntity{
 
-    @Column(name = "EmployeeId")
-    private Long EmployeeId;
+    @ManyToOne
+    @JoinColumn(name = "EmployeeId")
+    private Employee EmployeeId;
 
     @Column(name = "Phone_Number")
     private String phoneNumber;
@@ -20,11 +19,11 @@ public class EmployeePhone extends GenericEntity{
     @Column(name = "Description")
     private String description;
 
-    public Long getEmployeeId() {
+    public Employee getEmployeeId() {
         return EmployeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(Employee employeeId) {
         EmployeeId = employeeId;
     }
 

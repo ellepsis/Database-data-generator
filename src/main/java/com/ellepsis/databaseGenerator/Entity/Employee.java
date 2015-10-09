@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -33,8 +31,9 @@ public class Employee extends GenericEntity{
     @Column(name = "Passport_Number")
     private String passportNumber;
 
-    @Column(name = "Address_Id")
-    private Long addressId;
+    @ManyToOne
+    @JoinColumn(name = "Address_Id")
+    private Address addressId;
 
     @Column(name = "Employment_Date")
     private Date employmentDate;
@@ -42,8 +41,9 @@ public class Employee extends GenericEntity{
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
 
-    @Column(name = "User_Id")
-    private Long userId;
+    @OneToOne
+    @JoinColumn(name = "User_Id")
+    private SystemUser userId;
 
     public String getFirstName() {
         return firstName;
@@ -101,11 +101,11 @@ public class Employee extends GenericEntity{
         this.passportNumber = passportNumber;
     }
 
-    public Long getAddressId() {
+    public Address getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Long addressId) {
+    public void setAddressId(Address addressId) {
         this.addressId = addressId;
     }
 
@@ -125,11 +125,11 @@ public class Employee extends GenericEntity{
         this.dismissalDate = dismissalDate;
     }
 
-    public Long getUserId() {
+    public SystemUser getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(SystemUser userId) {
         this.userId = userId;
     }
 }

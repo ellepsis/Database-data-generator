@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,8 +10,9 @@ import java.util.Date;
 @Table(name = "Repair")
 public class Repair extends GenericEntity{
 
-    @Column(name = "Car_Id")
-    private Long carId;
+    @ManyToOne
+    @JoinColumn(name = "Car_Id")
+    private Car carId;
 
     @Column(name = "Start_Date")
     private Date startDate;
@@ -27,11 +26,11 @@ public class Repair extends GenericEntity{
     @Column(name = "Place")
     private String place;
 
-    public Long getCarId() {
+    public Car getCarId() {
         return carId;
     }
 
-    public void setCarId(Long carId) {
+    public void setCarId(Car carId) {
         this.carId = carId;
     }
 

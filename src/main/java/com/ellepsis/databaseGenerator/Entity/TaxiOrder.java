@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,14 +10,17 @@ import java.util.Date;
 @Table(name = "Taxi_Order")
 public class TaxiOrder extends GenericEntity{
 
-    @Column(name = "Status_Order_Id")
-    private Long statusOrderId;
+    @ManyToOne
+    @JoinColumn(name = "Status_Order_Id")
+    private StatusOrder statusOrderId;
 
-    @Column(name = "Dispatcher_Id")
-    private Long dispatcherId;
+    @ManyToOne
+    @JoinColumn(name = "Dispatcher_Id")
+    private Dispatcher dispatcherId;
 
-    @Column(name = "Driver_Id")
-    private Long driverId;
+    @ManyToOne
+    @JoinColumn(name = "Driver_Id")
+    private Driver driverId;
 
     @Column(name = "Order_Date")
     private Date orderDate;
@@ -27,20 +28,25 @@ public class TaxiOrder extends GenericEntity{
     @Column(name = "Preorder_Date")
     private Date preorderDate;
 
-    @Column(name = "Start_Point_Id")
-    private Long startPointId;
+    @ManyToOne
+    @JoinColumn(name = "Start_Point_Id")
+    private Address startPointId;
 
-    @Column(name = "End_Point_Id")
-    private Long endPointId;
+    @ManyToOne
+    @JoinColumn(name = "End_Point_Id")
+    private Address endPointId;
 
-    @Column(name = "Car_Id")
-    private Long carId;
+    @ManyToOne
+    @JoinColumn(name = "Car_Id")
+    private Car carId;
 
-    @Column(name = "Client_Id")
-    private Long clientId;
+    @ManyToOne
+    @JoinColumn(name = "Client_Id")
+    private Client clientId;
 
-    @Column(name = "Phone_Id")
-    private Long phoneId;
+    @ManyToOne
+    @JoinColumn(name = "Phone_Id")
+    private ClientPhone phoneId;
 
     @Column(name = "Cost")
     private Long cost;
@@ -48,27 +54,27 @@ public class TaxiOrder extends GenericEntity{
     @Column(name = "Order_Comment")
     private String orderComment;
 
-    public Long getStatusOrderId() {
+    public StatusOrder getStatusOrderId() {
         return statusOrderId;
     }
 
-    public void setStatusOrderId(Long statusOrderId) {
+    public void setStatusOrderId(StatusOrder statusOrderId) {
         this.statusOrderId = statusOrderId;
     }
 
-    public Long getDispatcherId() {
+    public Dispatcher getDispatcherId() {
         return dispatcherId;
     }
 
-    public void setDispatcherId(Long dispatcherId) {
+    public void setDispatcherId(Dispatcher dispatcherId) {
         this.dispatcherId = dispatcherId;
     }
 
-    public Long getDriverId() {
+    public Driver getDriverId() {
         return driverId;
     }
 
-    public void setDriverId(Long driverId) {
+    public void setDriverId(Driver driverId) {
         this.driverId = driverId;
     }
 
@@ -88,43 +94,43 @@ public class TaxiOrder extends GenericEntity{
         this.preorderDate = preorderDate;
     }
 
-    public Long getStartPointId() {
+    public Address getStartPointId() {
         return startPointId;
     }
 
-    public void setStartPointId(Long startPointId) {
+    public void setStartPointId(Address startPointId) {
         this.startPointId = startPointId;
     }
 
-    public Long getEndPointId() {
+    public Address getEndPointId() {
         return endPointId;
     }
 
-    public void setEndPointId(Long endPointId) {
+    public void setEndPointId(Address endPointId) {
         this.endPointId = endPointId;
     }
 
-    public Long getCarId() {
+    public Car getCarId() {
         return carId;
     }
 
-    public void setCarId(Long carId) {
+    public void setCarId(Car carId) {
         this.carId = carId;
     }
 
-    public Long getClientId() {
+    public Client getClientId() {
         return clientId;
     }
 
-    public void setClientId(Long clientId) {
+    public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
 
-    public Long getPhoneId() {
+    public ClientPhone getPhoneId() {
         return phoneId;
     }
 
-    public void setPhoneId(Long phoneId) {
+    public void setPhoneId(ClientPhone phoneId) {
         this.phoneId = phoneId;
     }
 
