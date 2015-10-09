@@ -9,8 +9,8 @@ import java.util.Date;
  * Created by EllepsisRT on 05.10.2015.
  */
 @Entity
-@Table(name = "Order")
-public class Order extends GenericEntity{
+@Table(name = "Taxi_Order")
+public class TaxiOrder extends GenericEntity{
 
     @Column(name = "Status_Order_Id")
     private Long statusOrderId;
@@ -21,8 +21,8 @@ public class Order extends GenericEntity{
     @Column(name = "Driver_Id")
     private Long driverId;
 
-    @Column(name = "Date")
-    private Date date;
+    @Column(name = "Order_Date")
+    private Date orderDate;
 
     @Column(name = "Preorder_Date")
     private Date preorderDate;
@@ -45,8 +45,8 @@ public class Order extends GenericEntity{
     @Column(name = "Cost")
     private Long cost;
 
-    @Column(name = "Comment")
-    private String comment;
+    @Column(name = "Order_Comment")
+    private String orderComment;
 
     public Long getStatusOrderId() {
         return statusOrderId;
@@ -72,12 +72,12 @@ public class Order extends GenericEntity{
         this.driverId = driverId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Date getPreorderDate() {
@@ -136,11 +136,11 @@ public class Order extends GenericEntity{
         this.cost = cost;
     }
 
-    public String getComment() {
-        return comment;
+    public String getOrderComment() {
+        return orderComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setOrderComment(String orderComment) {
+        this.orderComment = orderComment;
     }
 }

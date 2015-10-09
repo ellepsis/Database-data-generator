@@ -24,7 +24,7 @@ public class Car extends GenericEntity{
     @Column(name = "VIN")
     private String VIN;
 
-    @Column(name = "Vehicle_Registration_Certificate")
+    @Column(name = "VehicleRegCertificate")
     private String vehicleRegistrationCertificate;
 
     @Column(name = "Insurance_Number")

@@ -45,32 +45,23 @@ public class ClientsGenerator {
         );
     }
 
-    public ArrayList<Client> generateClients(ClientTypeRepository clientTypeRepository, int count ) throws Exception {
+    public List<Client> generateClients(ClientTypeRepository clientTypeRepository, int count ) throws Exception {
         List<ClientType> clientTypes = clientTypeRepository.findAll();
         clientTypes.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
-
-        ArrayList<Client> allClients = new ArrayList<>(count);
-
-        Client[] femaleClients = generateFemaleClients(clientTypes);
-        Client[] maleClients   = generateMaleClients(clientTypes);
-        int femaleN = 0;
-        int maleN   = 0;
+        List<Client> allClients = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            if (random.nextInt(10) > 4) { //Male
-                if (maleClients.length == maleN ) {
-                    maleClients = generateMaleClients(clientTypes);
-                    maleN = 0;
+            Client[] maleClients = generateMaleClients(clientTypes);
+            Client[] femaleClients = generateFemaleClients(clientTypes);
+            int maleClientNumber = 0;
+            int femaleClientNumber = 0;
+            while(maleClientNumber < maleClients.length && femaleClientNumber < maleClients.length) {
+                if (random.nextInt(10) > 4) { //Male
+                    if (maleClientNumber < maleClients.length)
+                        allClients.add(maleClients[maleClientNumber++]);
+                } else {                      //female
+                    if (femaleClientNumber < femaleClients.length)
+                        allClients.add(femaleClients[femaleClientNumber++]);
                 }
-                allClients.add( maleClients[maleN] );
-                maleN++;
-            }
-            else {                        //famale
-                if (femaleClients.length == femaleN ) {
-                    femaleClients = generateFemaleClients(clientTypes);
-                    femaleN = 0;
-                }
-                allClients.add( maleClients[femaleN] );
-                femaleN++;
             }
         }
         return allClients;

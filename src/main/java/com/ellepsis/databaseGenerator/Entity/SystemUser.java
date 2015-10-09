@@ -8,8 +8,8 @@ import javax.persistence.Table;
  * Created by EllepsisRT on 05.10.2015.
  */
 @Entity
-@Table(name = "User")
-public class User extends GenericEntity{
+@Table(name = "System_User")
+public class SystemUser extends GenericEntity{
 
     @Column(name = "User_Name")
     private String userName;

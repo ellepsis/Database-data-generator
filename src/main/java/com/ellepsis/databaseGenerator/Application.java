@@ -8,11 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Random;
-
 /**
  * Created by vladislav on 30.09.15.
  */
@@ -29,7 +24,7 @@ public class Application implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         ClientsGenerator clientsGenerator = new ClientsGenerator();
         clientTypeRepository.save(clientsGenerator.generateClientType());
-        clientRepository.save(clientsGenerator.generateClients(clientTypeRepository, 3));
+        clientRepository.save(clientsGenerator.generateClients(clientTypeRepository, 6));
     }
 
 
