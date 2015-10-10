@@ -10,8 +10,7 @@ import java.util.List;
  * Created by EllepsisRT on 10.10.2015.
  */
 public class SystemUsersGenerator {
-    public List<SystemUser> systemUsersGenerator(EmployeeRepository employeeRepository){
+    public void systemUsersGenerator(EmployeeRepository employeeRepository){
         List<Employee> employees = employeeRepository.findAll();
-        for (int i = 0; )
     }
 }

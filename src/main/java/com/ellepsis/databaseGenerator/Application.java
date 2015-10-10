@@ -2,6 +2,9 @@ package com.ellepsis.databaseGenerator;
 
 import com.ellepsis.databaseGenerator.Entity.Client;
 import com.ellepsis.databaseGenerator.Entity.ClientPhone;
+import com.ellepsis.databaseGenerator.Entity.SystemUser;
+import com.ellepsis.databaseGenerator.Generators.AddressGenerator;
+import com.ellepsis.databaseGenerator.Generators.AddressGenerator;
 import com.ellepsis.databaseGenerator.Generators.ClientPhonesGenerator;
 import com.ellepsis.databaseGenerator.Generators.ClientTypesGenerator;
 import com.ellepsis.databaseGenerator.Generators.ClientsGenerator;
@@ -21,6 +24,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -43,6 +47,8 @@ public class Application implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         //addClients();
         //generateClientPhones();
+        AddressGenerator asdf = new AddressGenerator("D:\\DatabaseGenerator\\jsonGeneratedFiles\\addresses.yml");
+        System.out.println( asdf.generateAddress() );
     }
 
     private void addClients() throws IOException {
@@ -65,6 +71,4 @@ public class Application implements CommandLineRunner {
         List<ClientPhone> clientPhones = mapper.readValue(file, clientListType);
         clientPhoneRepository.save(clientPhones);
     }
-
-
 }
