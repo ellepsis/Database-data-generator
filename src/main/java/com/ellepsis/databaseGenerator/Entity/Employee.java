@@ -10,31 +10,31 @@ import java.util.Date;
 @Table(name = "Employee")
 public class Employee extends GenericEntity{
 
-    @Column(name = "First_Name")
+    @Column(name = "First_Name", nullable = false)
     private String firstName;
 
-    @Column(name = "Second_Name")
+    @Column(name = "Second_Name", nullable = false)
     private String secondName;
 
     @Column(name = "Middle_Name")
     private String middleName;
 
-    @Column(name = "Gender")
+    @Column(name = "Gender", nullable = false)
     private Character gender;
 
     @Column(name = "Position")
     private String position;
 
-    @Column(name = "Birthday_Date")
+    @Column(name = "Birthday_Date", nullable = false)
     private Date birthdayDate;
 
     @Column(name = "Passport_Number")
     private String passportNumber;
 
-    @Column(name = "Address_Id")
+    @Column(name = "Address")
     private String addressId;
 
-    @Column(name = "Employment_Date")
+    @Column(name = "Employment_Date", nullable = false)
     private Date employmentDate;
 
     @Column(name = "Dismissal_Date")
