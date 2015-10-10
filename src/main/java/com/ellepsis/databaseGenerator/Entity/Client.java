@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Table(name = "Client")
 public class Client extends GenericEntity{
 
-    @Column(name = "First_Name", nullable = false)
+    @Column(name = "First_Name")
     private String firstName;
 
-    @Column(name = "Second_Name", nullable = false)
+    @Column(name = "Second_Name")
     private String secondName;
 
     @Column(name = "Middle_Name")

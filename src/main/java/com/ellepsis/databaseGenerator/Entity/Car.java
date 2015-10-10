@@ -10,13 +10,13 @@ import java.time.Year;
 @Table(name = "Car")
 public class Car extends GenericEntity{
 
-    @Column(name = "Brand")
+    @Column(name = "Brand", nullable = false)
     private String brand;
 
     @Column(name = "Model")
     private String model;
 
-    @Column(name = "Government_Number")
+    @Column(name = "Government_Number", nullable = false)
     private String governmentNumber;
 
     @Column(name = "VIN")
