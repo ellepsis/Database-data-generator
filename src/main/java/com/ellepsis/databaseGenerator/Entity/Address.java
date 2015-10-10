@@ -8,7 +8,7 @@ import javax.persistence.Table;
  * Created by EllepsisRT on 07.10.2015.
  */
 
-@Entity
+//@Entity
 @Table(name = "Address")
 public class Address extends GenericEntity{
 

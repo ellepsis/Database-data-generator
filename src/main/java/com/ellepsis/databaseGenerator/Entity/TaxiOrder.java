@@ -28,13 +28,11 @@ public class TaxiOrder extends GenericEntity{
     @Column(name = "Preorder_Date")
     private Date preorderDate;
 
-    @ManyToOne
-    @JoinColumn(name = "Start_Point_Id")
-    private Address startPointId;
+    @Column(name = "Start_Point")
+    private String startPointId;
 
-    @ManyToOne
-    @JoinColumn(name = "End_Point_Id")
-    private Address endPointId;
+    @Column(name = "End_Point")
+    private String endPointId;
 
     @ManyToOne
     @JoinColumn(name = "Car_Id")
@@ -94,19 +92,19 @@ public class TaxiOrder extends GenericEntity{
         this.preorderDate = preorderDate;
     }
 
-    public Address getStartPointId() {
+    public String getStartPointId() {
         return startPointId;
     }
 
-    public void setStartPointId(Address startPointId) {
+    public void setStartPointId(String startPointId) {
         this.startPointId = startPointId;
     }
 
-    public Address getEndPointId() {
+    public String getEndPointId() {
         return endPointId;
     }
 
-    public void setEndPointId(Address endPointId) {
+    public void setEndPointId(String endPointId) {
         this.endPointId = endPointId;
     }
 

@@ -31,9 +31,8 @@ public class Employee extends GenericEntity{
     @Column(name = "Passport_Number")
     private String passportNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "Address_Id")
-    private Address addressId;
+    @Column(name = "Address_Id")
+    private String addressId;
 
     @Column(name = "Employment_Date")
     private Date employmentDate;
@@ -101,11 +100,11 @@ public class Employee extends GenericEntity{
         this.passportNumber = passportNumber;
     }
 
-    public Address getAddressId() {
+    public String getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Address addressId) {
+    public void setAddressId(String addressId) {
         this.addressId = addressId;
     }
 
