@@ -32,7 +32,7 @@ public class Employee extends GenericEntity{
     private String passportNumber;
 
     @Column(name = "Address")
-    private String addressId;
+    private String address;
 
     @Column(name = "Employment_Date", nullable = false)
     private Date employmentDate;
@@ -101,11 +101,11 @@ public class Employee extends GenericEntity{
     }
 
     public String getAddressId() {
-        return addressId;
+        return address;
     }
 
     public void setAddressId(String addressId) {
-        this.addressId = addressId;
+        this.address = addressId;
     }
 
     public Date getEmploymentDate() {

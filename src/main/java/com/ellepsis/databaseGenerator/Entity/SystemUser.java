@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Table(name = "System_User")
 public class SystemUser extends GenericEntity{
 
-    @Column(name = "User_Name")
+    @Column(name = "User_Name", unique = true)
     private String userName;
 
     @Column(name = "Password")
-    private String Password;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "Permissions_Type_Id")
@@ -28,11 +28,11 @@ public class SystemUser extends GenericEntity{
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public PermissionType getPermissionsTypeId() {
