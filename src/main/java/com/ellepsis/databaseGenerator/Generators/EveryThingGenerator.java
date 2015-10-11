@@ -39,7 +39,8 @@ public class EveryThingGenerator {
     @Autowired private CarRepository carRepository;
 
     /* !!!---> change for you <---!!! */
-    private String basePath = "D:\\DatabaseGenerator";
+    //private String basePath = "D:\\DatabaseGenerator";
+    private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
 
     public void generate() throws IOException, URISyntaxException {
         //addClients();
@@ -47,20 +48,20 @@ public class EveryThingGenerator {
         //generateEmployeesAndAllWithIt(500);
 
         //generateStatesCar();
-        loadStatusCar();
+        //loadStatusCar();
 
         //generateCars(100);
-        loadCar();
+        //loadCar();
 
 
         //generatePermissions();
-        //loadPermissions();
+        loadPermissions();
 
-        //generateSystemUsers(100);
-        //loadSystemUsers();
+        generateSystemUsers(500);
+        loadSystemUsers();
 
-        //generateEmployees(100);
-        //loadEmployees();
+        generateEmployees(500);
+        loadEmployees();
     }
 
     /*=============== Car ===============*/
