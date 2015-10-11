@@ -29,7 +29,6 @@ public class Client extends GenericEntity{
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -37,7 +36,6 @@ public class Client extends GenericEntity{
     public String getSecondName() {
         return secondName;
     }
-
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
@@ -45,7 +43,6 @@ public class Client extends GenericEntity{
     public String getMiddleName() {
         return middleName;
     }
-
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
@@ -53,7 +50,6 @@ public class Client extends GenericEntity{
     public Character getGender() {
         return gender;
     }
-
     public void setGender(Character gender) {
         this.gender = gender;
     }
@@ -61,7 +57,6 @@ public class Client extends GenericEntity{
     public ClientType getClientType() {
         return clientType;
     }
-
     public void setClientType(ClientType clientType) {
         this.clientType = clientType;
     }

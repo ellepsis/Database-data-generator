@@ -35,7 +35,7 @@ public class Application implements CommandLineRunner {
 
     @Autowired EveryThingGenerator everyThingGenerator;
 
-    public static void main(String... args) {
+    public static void main(String... args)  {
         SpringApplication.run(Application.class, args);
     }
 

@@ -22,17 +22,14 @@ public class Car extends GenericEntity{
     @Column(name = "VIN")
     private String VIN;
 
-    @Column(name = "VehicleRegCertificate")
-    private String vehicleRegistrationCertificate;
-
     @Column(name = "Insurance_Number")
     private String insuranceNumber;
 
     @Column(name = "Release_Year")
-    private Year releaseYear;
+    private String releaseYear;
 
-    @ManyToOne
-    @JoinColumn(name = "Status_Car_Id")
+    @ManyToOne(targetEntity = StatusCar.class)
+    @JoinColumn(name = "Status_Car_ID", nullable = false)
     private StatusCar statusCarId;
 
     public String getBrand() {
@@ -67,14 +64,6 @@ public class Car extends GenericEntity{
         this.VIN = VIN;
     }
 
-    public String getVehicleRegistrationCertificate() {
-        return vehicleRegistrationCertificate;
-    }
-
-    public void setVehicleRegistrationCertificate(String vehicleRegistrationCertificate) {
-        this.vehicleRegistrationCertificate = vehicleRegistrationCertificate;
-    }
-
     public String getInsuranceNumber() {
         return insuranceNumber;
     }
@@ -83,11 +72,11 @@ public class Car extends GenericEntity{
         this.insuranceNumber = insuranceNumber;
     }
 
-    public Year getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Year releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 
