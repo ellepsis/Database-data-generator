@@ -102,28 +102,7 @@ public class EveryThingGenerator {
         //statusCarRepository.save(statusCarGenerator.generateStatesCar());
     }
 
-    /*=============== Employees ===============*/
 
-    private void loadEmployees() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        final CollectionType employeesListType = mapper.getTypeFactory().constructCollectionType(List.class, Employee.class);
-        File file = new File(basePath+"\\jsonGeneratedFiles\\Employees.json");
-        List<Employee> employees = mapper.readValue(file, employeesListType);
-        employeeRepository.save(employees);
-    }
-
-    private void generateEmployees(int count) throws URISyntaxException, IOException {
-        List<Employee> employees = new EmployeesGenerator().generateEmployees(systemUserRepository, permissionTypeRepository, count);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(basePath + "\\jsonGeneratedFiles\\Employees.json"), employees);
-        //employeeRepository.save(employees);
-    }
-
-    private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
-        generatePermissions();
-        generateSystemUsers(count);
-        generateEmployees(count);
-    }
 
     /*=============== Client ===============*/
 
@@ -148,6 +127,29 @@ public class EveryThingGenerator {
         final CollectionType clientListType = mapper.getTypeFactory().constructCollectionType(List.class, ClientPhone.class);
         List<ClientPhone> clientPhones = mapper.readValue(file, clientListType);
         clientPhoneRepository.save(clientPhones);
+    }
+
+        /*=============== Employees ===============*/
+
+    private void loadEmployees() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        final CollectionType employeesListType = mapper.getTypeFactory().constructCollectionType(List.class, Employee.class);
+        File file = new File(basePath+"\\jsonGeneratedFiles\\Employees.json");
+        List<Employee> employees = mapper.readValue(file, employeesListType);
+        employeeRepository.save(employees);
+    }
+
+    private void generateEmployees(int count) throws URISyntaxException, IOException {
+        List<Employee> employees = new EmployeesGenerator().generateEmployees(systemUserRepository, permissionTypeRepository, count);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(basePath + "\\jsonGeneratedFiles\\Employees.json"), employees);
+        //employeeRepository.save(employees);
+    }
+
+    private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
+        generatePermissions();
+        generateSystemUsers(count);
+        generateEmployees(count);
     }
 
     /*=============== Permission ===============*/
