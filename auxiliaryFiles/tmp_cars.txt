@@ -1,0 +1,295 @@
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3313.html">Acura ZDX</a></td>
+<td>2010</td>
+<td>30&nbsp;131</td>
+<td>3.7л i, 4WD, АКПП</td>
+<td>1&nbsp;595&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3321.html">Audi Q5</a></td>
+<td>2010</td>
+<td>87&nbsp;802</td>
+<td>2.0л i, 4WD, АКПП</td>
+<td>1&nbsp;130&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3349.html">BMW X6</a></td>
+<td>2008</td>
+<td>119&nbsp;346</td>
+<td>3.0л TD, 4WD, АКПП</td>
+<td>1&nbsp;665&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3316.html">BMW X6</a></td>
+<td>2008</td>
+<td>84&nbsp;486</td>
+<td>3.0л TD, 4WD, АКПП</td>
+<td>1&nbsp;685&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3269.html">Citroen Jumper</a></td>
+<td>2012</td>
+<td>2&nbsp;900</td>
+<td>2.2л TD, 2WD, МКПП</td>
+<td>1&nbsp;300&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3326.html">Daewoo Matiz</a></td>
+<td>2012</td>
+<td>58&nbsp;304</td>
+<td>0.8л i, 2WD, МКПП</td>
+<td>199&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/2746.html">Ford Transit</a></td>
+<td>2008</td>
+<td>143&nbsp;340</td>
+<td>2,4л TD, 2WD, МКПП</td>
+<td>655&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3372.html">Honda CR-V</a></td>
+<td>2003</td>
+<td>87&nbsp;315</td>
+<td>2.4л i, 4WD, МКПП</td>
+<td>439&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3356.html">Hyundai Elantra</a></td>
+<td>2005</td>
+<td>136&nbsp;388</td>
+<td>1.6л i, 2WD, МКПП</td>
+<td>225&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3353.html">Hyundai IX35</a></td>
+<td>2011</td>
+<td>62&nbsp;325</td>
+<td>2.0л i, 2WD, АКПП</td>
+<td>745&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3385.html">Hyundai Santa Fe</a></td>
+<td>2008</td>
+<td>72&nbsp;500</td>
+<td>2.2л TD, 4WD, АКПП</td>
+<td>760&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3378.html">Kia Rio II рестайлинг</a></td>
+<td>2011</td>
+<td>109&nbsp;788</td>
+<td>1.4л i, 2WD, АКПП</td>
+<td>355&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3393.html">Kia Sorento</a></td>
+<td>2009</td>
+<td>61&nbsp;135</td>
+<td>2.5л TD, 4WD, МКПП</td>
+<td>665&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3375.html">Kia Soul</a></td>
+<td>2012</td>
+<td>57&nbsp;550</td>
+<td>1.6л i, 2WD, АКПП</td>
+<td>609&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3381.html">Lada Kalina</a></td>
+<td>2012</td>
+<td>63&nbsp;735</td>
+<td>1.6л i, 2WD, МКПП</td>
+<td>235&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3387.html">Lexus LX570</a></td>
+<td>2013</td>
+<td>40&nbsp;166</td>
+<td>5.7л i, 4WD, АКПП</td>
+<td>4&nbsp;000&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3374.html">Mazda 3</a></td>
+<td>2010</td>
+<td>47&nbsp;474</td>
+<td>1.6л i, 2WD, АКПП</td>
+<td>575&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3312.html">Mercedes-Benz CLS 350</a></td>
+<td>2005</td>
+<td>58&nbsp;252</td>
+<td>3.5л i, 2WD, АКПП</td>
+<td>939&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3323.html">Mercedes-Benz E-220</a></td>
+<td>2004</td>
+<td>163&nbsp;300</td>
+<td>2.2л TD, 2WD, АКПП</td>
+<td>459&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3396.html">Mercedes-Benz ML 350</a></td>
+<td>2010</td>
+<td>88&nbsp;156</td>
+<td>3.5л i, 4WD, АКПП</td>
+<td>1&nbsp;530&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3395.html">Nissan Almera</a></td>
+<td>2006</td>
+<td>147&nbsp;963</td>
+<td>1.5л i, 2WD, МКПП</td>
+<td>260&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3357.html">Nissan Note</a></td>
+<td>2008</td>
+<td>53&nbsp;260</td>
+<td>1.4л i, 2WD, МКПП</td>
+<td>299&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3260.html">Nissan Primera</a></td>
+<td>2006</td>
+<td>131&nbsp;520</td>
+<td>1.6л i, 2WD, МКПП</td>
+<td>325&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3399.html">Nissan X-Trail</a></td>
+<td>2007</td>
+<td>87&nbsp;109</td>
+<td>2.0л i, 4WD, МКПП</td>
+<td>570&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3398.html">Opel Corsa</a></td>
+<td>2011</td>
+<td>39&nbsp;030</td>
+<td>1.4л i, 2WD, АКПП</td>
+<td>420&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3394.html">Opel Zafira</a></td>
+<td>2009</td>
+<td>57&nbsp;500</td>
+<td>1.7л TD, 2WD, МКПП</td>
+<td>539&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3382.html">Skoda Octavia</a></td>
+<td>2013</td>
+<td>36&nbsp;934</td>
+<td>1.4л i, 2WD, МКПП</td>
+<td>615&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3379.html">Ssang Yong Actyon</a></td>
+<td>2011</td>
+<td>40&nbsp;700</td>
+<td>2.0л TD, 2WD, МКПП</td>
+<td>565&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3389.html">Suzuki Grand Vitara</a></td>
+<td>2007</td>
+<td>78&nbsp;523</td>
+<td>2.0л i, 4WD, АКПП</td>
+<td>595&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3390.html">Suzuki Grand Vitara</a></td>
+<td>2007</td>
+<td>68&nbsp;670</td>
+<td>2.0л i, 4WD, МКПП</td>
+<td>575&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3391.html">Toyota Land Cruiser Prado 120 Series</a></td>
+<td>2004</td>
+<td>120&nbsp;125</td>
+<td>4.0л i, 4WD, АКПП</td>
+<td>990&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3338.html">Volkswagen Golf</a></td>
+<td>2008</td>
+<td>81&nbsp;427</td>
+<td>1.6л i, 2WD, МКПП</td>
+<td>490&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3333.html">Volkswagen Passat B5 рестайлинг</a></td>
+<td>2004</td>
+<td>93&nbsp;500</td>
+<td>1.9л TD, 2WD, АКПП</td>
+<td>299&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3315.html">Volkswagen Tiguan</a></td>
+<td>2012</td>
+<td>73&nbsp;872</td>
+<td>2.0л i, 4WD, АКПП</td>
+<td>930&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3355.html">Volvo S40</a></td>
+<td>2010</td>
+<td>54&nbsp;060</td>
+<td>2.0л i, 2WD, АКПП</td>
+<td>575&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3397.html">Vortex Tingo</a></td>
+<td>2011</td>
+<td>42&nbsp;321</td>
+<td>1.8л i, 2WD, МКПП</td>
+<td>370&nbsp;000 руб.</td>
+</tr>
+
+<tr class="list_tr_onplace">
+<td><a href="/cars/view/3377.html">Нива 213100</a></td>
+<td>2012</td>
+<td>60&nbsp;041</td>
+<td>1.7л i, 4WD, МКПП</td>
+<td>270&nbsp;000 руб.</td>
+</tr>

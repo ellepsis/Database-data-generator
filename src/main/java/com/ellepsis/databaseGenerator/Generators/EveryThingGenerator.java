@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.security.Permission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +44,14 @@ public class EveryThingGenerator {
     public void generate() throws IOException, URISyntaxException {
         //addClients();
         //generateClientPhones();
-        generateEmployeesAndAllWithIt(500);
+        //generateEmployeesAndAllWithIt(500);
 
-        generateStatesCar();
-        generateCars(100);
+        //generatePermissions();
+        //generateSystemUsers(100);
+        //generateEmployees(100);
+
+
+
 
     }
 
@@ -105,6 +110,12 @@ public class EveryThingGenerator {
         employeeRepository.save(employees);
     }
 
+    private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
+        generatePermissions();
+        generateSystemUsers(count);
+        generateEmployees(count);
+    }
+
     /*=============== Client ===============*/
 
     private void addClients() throws IOException {
@@ -130,12 +141,14 @@ public class EveryThingGenerator {
         clientPhoneRepository.save(clientPhones);
     }
 
-    /*=============== Employee ===============*/
+    /*=============== Permission ===============*/
 
-    private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
-        generatePermissions();
-        generateSystemUsers(count);
-        generateEmployees(count);
+    private void loadPermissions() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, Permission.class);
+        File file = new File(basePath+"\\jsonGeneratedFiles\\Permissions.json");
+        List<PermissionType> permissions = mapper.readValue(file, permissionListType);
+        permissionTypeRepository.save(permissions);
     }
 
     private void generatePermissions() {
