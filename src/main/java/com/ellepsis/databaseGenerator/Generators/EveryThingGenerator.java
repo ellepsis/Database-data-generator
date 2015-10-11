@@ -46,15 +46,21 @@ public class EveryThingGenerator {
         //generateClientPhones();
         //generateEmployeesAndAllWithIt(500);
 
-        generatePermissions();
-        //generateSystemUsers(100);
-        //generateEmployees(100);
+        //generateStatesCar();
+        loadStatusCar();
 
+        //generateCars(100);
+        loadCar();
+
+
+        //generatePermissions();
         //loadPermissions();
-        loadSystemUsers();
-        loadEmployees();
 
+        //generateSystemUsers(100);
+        //loadSystemUsers();
 
+        //generateEmployees(100);
+        //loadEmployees();
     }
 
     /*=============== Car ===============*/
@@ -73,7 +79,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\Cars.json");
         mapper.writeValue(file, cars);
-        carRepository.save( cars );
+        //carRepository.save( cars );
     }
 
     /*=============== Status Car ===============*/
@@ -92,7 +98,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\StatesCar.json");
         mapper.writeValue(file, statesCar);
-        statusCarRepository.save(statusCarGenerator.generateStatesCar());
+        //statusCarRepository.save(statusCarGenerator.generateStatesCar());
     }
 
     /*=============== Employees ===============*/
@@ -109,7 +115,7 @@ public class EveryThingGenerator {
         List<Employee> employees = new EmployeesGenerator().generateEmployees(systemUserRepository, permissionTypeRepository, count);
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(basePath + "\\jsonGeneratedFiles\\Employees.json"), employees);
-        employeeRepository.save(employees);
+        //employeeRepository.save(employees);
     }
 
     private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
@@ -147,7 +153,7 @@ public class EveryThingGenerator {
 
     private void loadPermissions() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, Permission.class);
+        final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, PermissionType.class);
         File file = new File(basePath+"\\jsonGeneratedFiles\\Permissions.json");
         List<PermissionType> permissions = mapper.readValue(file, permissionListType);
         permissionTypeRepository.save(permissions);
@@ -159,7 +165,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\Permissions.json");
         mapper.writeValue(file, permissionTypes);
-        permissionTypeRepository.save(permissionTypes);
+        //permissionTypeRepository.save(permissionTypes);
     }
 
     /*=============== System User ===============*/
@@ -177,6 +183,6 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\SystemUsers.json");
         mapper.writeValue(file, systemUsers);
-        systemUserRepository.save(systemUsers);
+        //systemUserRepository.save(systemUsers);
     }
 }
