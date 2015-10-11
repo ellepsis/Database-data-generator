@@ -44,9 +44,16 @@ public class EveryThingGenerator {
     public void generate() throws IOException, URISyntaxException {
         //addClients();
         //generateClientPhones();
-        generateEmployeesAndAllWithIt(500);
-        generateStatesCar();
-        generateCars(100);
+        //generateEmployeesAndAllWithIt(500);
+
+        generatePermissions();
+        //generateSystemUsers(100);
+        //generateEmployees(100);
+
+        //loadPermissions();
+        loadSystemUsers();
+        loadEmployees();
+
 
     }
 
@@ -113,7 +120,7 @@ public class EveryThingGenerator {
         clientPhoneRepository.save(clientPhones);
     }
 
-        /*=============== Employees ===============*/
+    /*=============== Permission ===============*/
 
     private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
         generatePermissions();
@@ -128,6 +135,7 @@ public class EveryThingGenerator {
 
     private void loadPermissions() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+        final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, Permission.class);
         File file = new File(basePath+"\\jsonGeneratedFiles\\Permissions.json");
         final CollectionType permissionsListType = mapper.getTypeFactory().constructCollectionType(List.class, PermissionType.class);
         List<PermissionType> permissionTypes = mapper.readValue(file, permissionsListType);
