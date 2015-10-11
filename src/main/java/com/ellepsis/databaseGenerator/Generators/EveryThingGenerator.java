@@ -73,7 +73,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\Cars.json");
         mapper.writeValue(file, cars);
-        carRepository.save( cars );
+        //carRepository.save( cars );
     }
 
     /*=============== Status Car ===============*/
@@ -92,7 +92,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath+"\\jsonGeneratedFiles\\StatesCar.json");
         mapper.writeValue(file, statesCar);
-        statusCarRepository.save(statusCarGenerator.generateStatesCar());
+        //statusCarRepository.save(statusCarGenerator.generateStatesCar());
     }
 
     /*=============== Client ===============*/
