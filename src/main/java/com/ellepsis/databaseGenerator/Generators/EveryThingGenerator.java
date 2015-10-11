@@ -1,25 +1,16 @@
 package com.ellepsis.databaseGenerator.Generators;
 
 import com.ellepsis.databaseGenerator.Entity.*;
-import com.ellepsis.databaseGenerator.Generators.AddressGenerator;
-import com.ellepsis.databaseGenerator.Generators.ClientTypesGenerator;
 import com.ellepsis.databaseGenerator.Repository.*;
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 
-import javax.management.PersistentMBean;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.security.Permission;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,7 +45,7 @@ public class EveryThingGenerator {
         //loadCar();
 
 
-        //generatePermissions();
+        generatePermissions();
         loadPermissions();
 
         generateSystemUsers(500);
@@ -102,8 +93,6 @@ public class EveryThingGenerator {
         //statusCarRepository.save(statusCarGenerator.generateStatesCar());
     }
 
-
-
     /*=============== Client ===============*/
 
     private void addClients() throws IOException {
@@ -142,6 +131,7 @@ public class EveryThingGenerator {
     private void generateEmployees(int count) throws URISyntaxException, IOException {
         List<Employee> employees = new EmployeesGenerator().generateEmployees(systemUserRepository, permissionTypeRepository, count);
         ObjectMapper mapper = new ObjectMapper();
+        updateJsonSystemUsers();
         mapper.writeValue(new File(basePath + "\\jsonGeneratedFiles\\Employees.json"), employees);
         //employeeRepository.save(employees);
     }
@@ -187,5 +177,12 @@ public class EveryThingGenerator {
         File file = new File(basePath+"\\jsonGeneratedFiles\\SystemUsers.json");
         mapper.writeValue(file, systemUsers);
         //systemUserRepository.save(systemUsers);
+    }
+
+    private void updateJsonSystemUsers() throws IOException {
+        List<SystemUser> systemUsers = systemUserRepository.findAll();
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath+"\\jsonGeneratedFiles\\SystemUsers.json");
+        mapper.writeValue(file, systemUsers);
     }
 }

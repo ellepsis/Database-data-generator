@@ -7,10 +7,10 @@ import java.util.Date;
  * Created by EllepsisRT on 07.10.2015.
  */
 @Entity
-@Table(name = "Repair")
-public class Repair extends GenericEntity{
+@Table(name = "Car_Repair")
+public class CarRepair extends GenericEntity{
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Car.class)
     @JoinColumn(name = "Car_Id")
     private Car carId;
 

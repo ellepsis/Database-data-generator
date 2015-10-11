@@ -3,6 +3,7 @@ package com.ellepsis.databaseGenerator.Generators;
 import com.ellepsis.databaseGenerator.Entity.Employee;
 import com.ellepsis.databaseGenerator.Entity.PermissionType;
 import com.ellepsis.databaseGenerator.Entity.SystemUser;
+import com.ellepsis.databaseGenerator.Repository.CarRepository;
 import com.ellepsis.databaseGenerator.Repository.PermissionTypeRepository;
 import com.ellepsis.databaseGenerator.Repository.SystemUserRepository;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +37,7 @@ public class EmployeesGenerator {
             int k = 0;
             for (int j = employees.size(); j < count; j++) {
                 processEmployee(employeesArray[k], k, users, permissionTypes);
+                systemUserRepository.save(employeesArray[k].getUserId());
                 employees.add(employeesArray[k++]);
             }
             employeeNumber++;
@@ -93,7 +95,7 @@ public class EmployeesGenerator {
             position = dispatcherPosition;
             permissionType = dispatcherPermissionType;
         }
-        employee.setPosition(position);
         employee.getUserId().setPermissionsTypeId(permissionType);
+        employee.setPosition(position);
     }
 }
