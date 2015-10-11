@@ -46,11 +46,13 @@ public class EveryThingGenerator {
         //generateClientPhones();
         //generateEmployeesAndAllWithIt(500);
 
-        //generatePermissions();
+        generatePermissions();
         //generateSystemUsers(100);
         //generateEmployees(100);
 
-
+        //loadPermissions();
+        loadSystemUsers();
+        loadEmployees();
 
 
     }
@@ -151,9 +153,12 @@ public class EveryThingGenerator {
         permissionTypeRepository.save(permissions);
     }
 
-    private void generatePermissions() {
+    private void generatePermissions() throws IOException {
         PermissionTypeGenerator permissionTypeGenerator = new PermissionTypeGenerator();
         List<PermissionType> permissionTypes = permissionTypeGenerator.generatePermissionTypes();
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath+"\\jsonGeneratedFiles\\Permissions.json");
+        mapper.writeValue(file, permissionTypes);
         permissionTypeRepository.save(permissionTypes);
     }
 
