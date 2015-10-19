@@ -24,8 +24,6 @@ public class SystemUsersGenerator {
 
     public List<SystemUser> systemUsersGenerator(PermissionTypeRepository permissionTypeRepository, int count) throws URISyntaxException {
         List<SystemUser> systemUsers = new ArrayList<>();
-        List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
-        PermissionType nullPermissionType = permissionTypes.stream().filter(o -> o.getDescription().contains("Null")).findFirst().get();
         int usersCount = 0;
         for (int i = 0; i <= count / 1000; i++) {
             RestTemplate restTemplate = new RestTemplate();
@@ -33,10 +31,16 @@ public class SystemUsersGenerator {
             SystemUser[] systemUsersArray = restTemplate.getForObject(uri, SystemUser[].class);
             int k = 0;
             for (int j = systemUsers.size(); j < count; j++) {
-                systemUsersArray[k].setPermissionsTypeId(nullPermissionType);
                 systemUsers.add(systemUsersArray[k++]);
             }
         }
+        listRepair(systemUsers, permissionTypeRepository);
         return systemUsers;
+    }
+
+    public void listRepair(List<SystemUser> systemUsers, PermissionTypeRepository permissionTypeRepository){
+        List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
+        PermissionType nullPermissionType = permissionTypes.stream().filter(o -> o.getDescription().contains("Null")).findFirst().get();
+        systemUsers.forEach(o -> o.setPermissionsTypeId(nullPermissionType));
     }
 }

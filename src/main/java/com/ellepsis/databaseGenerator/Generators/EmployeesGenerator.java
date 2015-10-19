@@ -17,6 +17,7 @@ import java.util.Random;
 /**
  * Created by EllepsisRT on 10.10.2015.
  */
+//TODO LISTREPAIR
 public class EmployeesGenerator {
 
     Random r = new Random();
@@ -73,7 +74,7 @@ public class EmployeesGenerator {
         final PermissionType dispatcherPermissionType = permissionTypes.stream().
                 filter(o -> o.getDescription().contains("Dispatcher")).findFirst().get();
         int rValue = r.nextInt(1000);
-        String position = null;
+        String position;
         PermissionType permissionType;
         if (rValue < 3){
             position = directorPosition;

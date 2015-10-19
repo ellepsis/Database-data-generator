@@ -16,21 +16,26 @@ import java.util.Random;
 /**
  * Created by EllepsisRT on 10.10.2015.
  */
-public class ClientPhonesGenerator{
+public class ClientPhonesGenerator {
     Random r = new Random();
+
     public List<ClientPhone> generateClientPhones(ClientRepository clientRepository) throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
-        List<Client> clients = clientRepository.findAll();
         List<ClientPhone> clientPhones = new ArrayList<>();
-        int clientsSize = clients.size();
-        for (int i = 0; i < clientsSize/1000; i++){
+        long clientsSize = clientRepository.count();
+        for (long i = 0; i < clientsSize / 1000; i++) {
             URI uri = new URI("https://mockaroo.com/74218160/download?count=1000&key=bfda25a0");
             ClientPhone[] clientPhonesArray = restTemplate.getForObject(uri, ClientPhone[].class);
-            for(ClientPhone clientPhone : clientPhonesArray){
-                clientPhone.setClientId(clients.get(r.nextInt(clientsSize-1)));
-            }
             clientPhones.addAll(Arrays.asList(clientPhonesArray));
         }
+        listRepair(clientPhones, clientRepository);
         return clientPhones;
+    }
+
+    public void listRepair(List<ClientPhone> clientPhones, ClientRepository clientRepository) {
+        List<Client> clients = clientRepository.findAll();
+        for (ClientPhone clientPhone : clientPhones) {
+            clientPhone.setClientId(clients.get(r.nextInt(clientPhones.size() - 1)));
+        }
     }
 }

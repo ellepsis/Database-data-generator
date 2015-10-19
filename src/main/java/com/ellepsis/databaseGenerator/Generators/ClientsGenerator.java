@@ -21,12 +21,10 @@ public class ClientsGenerator {
     Random random = new Random();
 
     public List<Client> generateClients(ClientTypeRepository clientTypeRepository, int count ) throws Exception {
-        List<ClientType> clientTypes = clientTypeRepository.findAll();
-        clientTypes.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         List<Client> allClients = new ArrayList<>(count);
         for (int i = 0; i < count/2; i++) {
-            Client[] maleClients = generateMaleClients(clientTypes);
-            Client[] femaleClients = generateFemaleClients(clientTypes);
+            Client[] maleClients = generateMaleClients();
+            Client[] femaleClients = generateFemaleClients();
             int maleClientNumber = 0;
             int femaleClientNumber = 0;
             while(maleClientNumber < maleClients.length && femaleClientNumber < maleClients.length) {
@@ -39,10 +37,11 @@ public class ClientsGenerator {
                 }
             }
         }
+        listRepair(allClients, clientTypeRepository);
         return allClients;
     }
 
-    private Client[] generateFemaleClients(List<ClientType> clientTypes) throws URISyntaxException {
+    private Client[] generateFemaleClients() throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
         URI uri = new URI("https://www.mockaroo.com/d8c06b60/download?count=1000&key=bfda25a0");
         Client[] clients = restTemplate.getForObject(uri, Client[].class);
@@ -50,12 +49,11 @@ public class ClientsGenerator {
             if (client.getMiddleName() != null)
                 client.setMiddleName(client.getMiddleName().concat("ovna"));
             client.setGender('F');
-            client.setClientType(getRandomClientType(clientTypes));
         }
         return clients;
     }
 
-    private Client[] generateMaleClients(List<ClientType> clientTypes) throws Exception {
+    private Client[] generateMaleClients() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         URI uri = new URI("https://www.mockaroo.com/b4fd3550/download?count=1000&key=bfda25a0");
         Client[] clients = restTemplate.getForObject(uri, Client[].class);
@@ -63,9 +61,13 @@ public class ClientsGenerator {
             if (client.getMiddleName() != null)
                 client.setMiddleName(client.getMiddleName().concat("ovich"));
             client.setGender('M');
-            client.setClientType(getRandomClientType(clientTypes));
         }
         return clients;
+    }
+
+    public void listRepair(List<Client> clients, ClientTypeRepository clientTypeRepository){
+        List<ClientType> clientTypes = clientTypeRepository.findAll();
+        clients.stream().forEach(o -> o.setClientType(getRandomClientType(clientTypes)));
     }
 
     private ClientType getRandomClientType(List<ClientType> clientTypes){
