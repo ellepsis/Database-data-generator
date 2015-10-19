@@ -4,6 +4,7 @@ import com.ellepsis.databaseGenerator.Entity.Employee;
 import com.ellepsis.databaseGenerator.Entity.PermissionType;
 import com.ellepsis.databaseGenerator.Entity.SystemUser;
 import com.ellepsis.databaseGenerator.Repository.CarRepository;
+import com.ellepsis.databaseGenerator.Repository.EmployeeRepository;
 import com.ellepsis.databaseGenerator.Repository.PermissionTypeRepository;
 import com.ellepsis.databaseGenerator.Repository.SystemUserRepository;
 import org.springframework.web.client.RestTemplate;
@@ -17,7 +18,6 @@ import java.util.Random;
 /**
  * Created by EllepsisRT on 10.10.2015.
  */
-//TODO LISTREPAIR
 public class EmployeesGenerator {
 
     Random r = new Random();
@@ -37,23 +37,20 @@ public class EmployeesGenerator {
             Employee[] employeesArray = restTemplate.getForObject(uri, Employee[].class);
             int k = 0;
             for (int j = employees.size(); j < count; j++) {
-                processEmployee(employeesArray[k], k, users, permissionTypes);
-                systemUserRepository.save(employeesArray[k].getUserId());
+                processEmployee(employeesArray[k]);
                 employees.add(employeesArray[k++]);
             }
             employeeNumber++;
         }
+        listRepair(employees, systemUserRepository, permissionTypeRepository);
+        employees.forEach(employee -> systemUserRepository.save(employee.getUserId()));
         return employees;
     }
 
-    private void processEmployee(Employee employee, int employeeNumber, List<SystemUser> users,
-                                 List<PermissionType> permissionTypes) {
+    private void processEmployee(Employee employee) {
         String middleName = employee.getMiddleName();
         if (employee.getGender() == 'M') employee.setMiddleName(middleName + "ovich");
         else employee.setMiddleName(middleName + "ovna");
-        SystemUser systemUser = users.get(employeeNumber);
-        employee.setUserId(users.get(employeeNumber));
-        setPositionAndPermission(employee, permissionTypes);
         employee.setPassportNumber(String.format("%10d", r.nextLong() % 9999999999L));
     }
 
@@ -98,5 +95,14 @@ public class EmployeesGenerator {
         }
         employee.getUserId().setPermissionsTypeId(permissionType);
         employee.setPosition(position);
+    }
+
+    public void listRepair(List<Employee> employees, SystemUserRepository systemUserRepository, PermissionTypeRepository permissionTypeRepository){
+        List<SystemUser> users = systemUserRepository.findAll();
+        List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
+        for(int i = 0; i < users.size(); i++){
+            employees.get(i).setUserId(users.get(i));
+            setPositionAndPermission(employees.get(i), permissionTypes);
+        }
     }
 }
