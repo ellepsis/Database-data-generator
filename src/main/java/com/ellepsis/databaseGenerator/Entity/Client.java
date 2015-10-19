@@ -1,5 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +24,7 @@ public class Client extends GenericEntity{
     @Column(name = "Gender")
     private Character gender;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = ClientType.class)
     @JoinColumn(name = "Client_Type_ID", nullable = false)
     private ClientType clientType;

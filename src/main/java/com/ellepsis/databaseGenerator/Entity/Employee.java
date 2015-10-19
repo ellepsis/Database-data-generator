@@ -1,5 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -40,6 +42,7 @@ public class Employee extends GenericEntity{
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "User_Id")
     private SystemUser userId;

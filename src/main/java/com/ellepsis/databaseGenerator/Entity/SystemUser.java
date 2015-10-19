@@ -1,5 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -15,6 +17,7 @@ public class SystemUser extends GenericEntity{
     @Column(name = "Password")
     private String password;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;

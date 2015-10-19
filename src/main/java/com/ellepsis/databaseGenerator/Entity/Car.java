@@ -1,5 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.Year;
 
@@ -28,6 +30,7 @@ public class Car extends GenericEntity{
     @Column(name = "Release_Year")
     private String releaseYear;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = StatusCar.class)
     @JoinColumn(name = "Status_Car_ID", nullable = false)
     private StatusCar statusCarId;
