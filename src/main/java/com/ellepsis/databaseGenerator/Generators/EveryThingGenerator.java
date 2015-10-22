@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +17,7 @@ import java.util.List;
 /**
  * Created by EllepsisRT on 10.10.2015.
  */
-@Configuration
-@ComponentScan("com.bd.service")
+@Component
 public class EveryThingGenerator {
 
     @Autowired private ClientRepository clientRepository;
