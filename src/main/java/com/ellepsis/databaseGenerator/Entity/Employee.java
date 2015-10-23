@@ -42,7 +42,7 @@ public class Employee extends GenericEntity{
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
 
-    @OneToOne(targetEntity = SystemUser.class, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
     private SystemUser systemUser;
 
     public String getFirstName() {

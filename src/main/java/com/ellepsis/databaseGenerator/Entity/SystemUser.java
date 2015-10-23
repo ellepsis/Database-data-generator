@@ -2,16 +2,24 @@ package com.ellepsis.databaseGenerator.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-import org.yaml.snakeyaml.events.Event;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+
 
 /**
  * Created by EllepsisRT on 05.10.2015.
  */
 @Entity
 @Table(name = "System_User")
-public class SystemUser extends GenericEntity {
+public class SystemUser{
+
+    @Id
+    @GeneratedValue(generator = "generator")
+    @GenericGenerator(name = "generator", strategy = "foreign",
+            parameters = @Parameter(name = "property", value = "employee"))
+    @Column(name = "Employee_id", unique = true, nullable = false)
+    private Long id;
 
     @Column(name = "User_Name", unique = true)
     private String userName;
@@ -24,9 +32,18 @@ public class SystemUser extends GenericEntity {
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;
 
-    @OneToOne
-    @MapsId
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     private Employee employee;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -58,5 +75,6 @@ public class SystemUser extends GenericEntity {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+        this.id = employee.getId();
     }
 }
