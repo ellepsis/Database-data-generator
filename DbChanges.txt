@@ -1,6 +1,0 @@
-Car:
-    GovermentNumber -> Government_Number
-Client:
-    Client_Phone_Number -> REMOVE THIS MF
-Address:
-    Other_Type -> Other_Address
