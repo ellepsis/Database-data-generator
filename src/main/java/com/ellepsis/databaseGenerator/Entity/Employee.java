@@ -42,11 +42,6 @@ public class Employee extends GenericEntity{
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
 
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "User_Id")
-    private SystemUser userId;
-
     public String getFirstName() {
         return firstName;
     }
@@ -125,13 +120,5 @@ public class Employee extends GenericEntity{
 
     public void setDismissalDate(Date dismissalDate) {
         this.dismissalDate = dismissalDate;
-    }
-
-    public SystemUser getUserId() {
-        return userId;
-    }
-
-    public void setUserId(SystemUser userId) {
-        this.userId = userId;
     }
 }

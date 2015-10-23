@@ -21,7 +21,7 @@ public class CarGenerator {
     ArrayList<String> tmp_cars = new ArrayList<>();
     Random random = new Random();
 
-    public CarGenerator(String path) throws IOException {
+    public void readValues(String path) throws IOException {
         FileInputStream fileReader = new FileInputStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileReader, "UTF-8"));
 
@@ -40,7 +40,6 @@ public class CarGenerator {
     }
 
     public Car generateCar() {
-
         Car car = new Car();
         String letters = "АВЕКМНОРСТУХ";
         String digits = "0987654321";

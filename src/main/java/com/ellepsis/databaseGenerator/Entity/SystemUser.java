@@ -9,7 +9,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "System_User")
-public class SystemUser extends GenericEntity{
+public class SystemUser {
+
+    @OneToOne(targetEntity = Employee.class)
+    @JoinColumn(name = "Employee_ID", unique = true)
+    private Employee EmployeeID;
 
     @Column(name = "User_Name", unique = true)
     private String userName;
@@ -21,6 +25,14 @@ public class SystemUser extends GenericEntity{
     @ManyToOne
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;
+
+    public Employee getEmployeeID() {
+        return EmployeeID;
+    }
+
+    public void setEmployeeID(Employee employeeID) {
+        EmployeeID = employeeID;
+    }
 
     public String getUserName() {
         return userName;

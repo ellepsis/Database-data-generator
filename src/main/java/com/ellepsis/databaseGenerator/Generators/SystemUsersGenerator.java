@@ -1,6 +1,5 @@
 package com.ellepsis.databaseGenerator.Generators;
 
-import com.ellepsis.databaseGenerator.Entity.Client;
 import com.ellepsis.databaseGenerator.Entity.Employee;
 import com.ellepsis.databaseGenerator.Entity.PermissionType;
 import com.ellepsis.databaseGenerator.Entity.SystemUser;
@@ -10,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.security.Permissions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,7 +20,8 @@ public class SystemUsersGenerator {
 
     Random r = new Random();
 
-    public List<SystemUser> systemUsersGenerator(PermissionTypeRepository permissionTypeRepository, int count) throws URISyntaxException {
+    public List<SystemUser> systemUsersGenerator(PermissionTypeRepository permissionTypeRepository,
+                                                 EmployeeRepository employeeRepository, int count) throws URISyntaxException {
         List<SystemUser> systemUsers = new ArrayList<>();
         int usersCount = 0;
         for (int i = 0; i <= count / 1000; i++) {
@@ -34,13 +33,51 @@ public class SystemUsersGenerator {
                 systemUsers.add(systemUsersArray[k++]);
             }
         }
-        listRepair(systemUsers, permissionTypeRepository);
+        listRepair(systemUsers, permissionTypeRepository, employeeRepository);
         return systemUsers;
     }
 
-    public void listRepair(List<SystemUser> systemUsers, PermissionTypeRepository permissionTypeRepository){
+    private void setPermission(Employee employee, SystemUser systemUser, List<PermissionType> permissionTypes) {
+        final String directorPosition = "Директор";
+        final String cleanerPosition = "Уборщица";
+        final String administratorPosition = "Администратор";
+        final String driverPosition = "Водитель";
+        final String dispatcherPosition = "Диспетчер";
+
+        final PermissionType directorPermissionType = permissionTypes.stream().
+                filter(o -> o.getDescription().contains("Director")).findFirst().get();
+        final PermissionType cleanerPermissionType = permissionTypes.stream().
+                filter(o -> o.getDescription().contains("Cleaner")).findFirst().get();
+        final PermissionType administratorPermissionType = permissionTypes.stream().
+                filter(o -> o.getDescription().contains("Manager")).findFirst().get();
+        final PermissionType driverPermissionType = permissionTypes.stream().
+                filter(o -> o.getDescription().contains("Driver")).findFirst().get();
+        final PermissionType dispatcherPermissionType = permissionTypes.stream().
+                filter(o -> o.getDescription().contains("Dispatcher")).findFirst().get();
+        PermissionType permissionType;
+
+        if (employee.getPosition() == directorPosition) {
+            permissionType = directorPermissionType;
+        } else if (employee.getPosition() == cleanerPosition) {
+            permissionType = cleanerPermissionType;
+        } else if (employee.getPosition() == administratorPosition) {
+            permissionType = administratorPermissionType;
+        } else if (employee.getPosition() == driverPosition) {
+            permissionType = driverPermissionType;
+        } else {
+            permissionType = dispatcherPermissionType;
+        }
+
+        systemUser.setPermissionsTypeId(permissionType);
+    }
+
+    public void listRepair(List<SystemUser> systemUsers, PermissionTypeRepository permissionTypeRepository,
+                           EmployeeRepository employeeRepository) {
         List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
-        PermissionType nullPermissionType = permissionTypes.stream().filter(o -> o.getDescription().contains("Null")).findFirst().get();
-        systemUsers.forEach(o -> o.setPermissionsTypeId(nullPermissionType));
+        List<Employee> employees = employeeRepository.findAll();
+        for (int i = 0; i < employees.size(); i++) {
+            systemUsers.get(i).setEmployeeID(employees.get(i));
+            setPermission(employees.get(i), systemUsers.get(i), permissionTypes);
+        }
     }
 }
