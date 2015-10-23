@@ -1,6 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.Year;

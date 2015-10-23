@@ -56,13 +56,13 @@ public class SystemUsersGenerator {
                 filter(o -> o.getDescription().contains("Dispatcher")).findFirst().get();
         PermissionType permissionType;
 
-        if (employee.getPosition() == directorPosition) {
+        if (employee.getPosition().equals(directorPosition)) {
             permissionType = directorPermissionType;
-        } else if (employee.getPosition() == cleanerPosition) {
+        } else if (employee.getPosition().equals(cleanerPosition)) {
             permissionType = cleanerPermissionType;
-        } else if (employee.getPosition() == administratorPosition) {
+        } else if (employee.getPosition().equals(administratorPosition)) {
             permissionType = administratorPermissionType;
-        } else if (employee.getPosition() == driverPosition) {
+        } else if (employee.getPosition().equals(driverPosition)) {
             permissionType = driverPermissionType;
         } else {
             permissionType = dispatcherPermissionType;
@@ -76,7 +76,7 @@ public class SystemUsersGenerator {
         List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
         List<Employee> employees = employeeRepository.findAll();
         for (int i = 0; i < employees.size(); i++) {
-            systemUsers.get(i).setEmployeeID(employees.get(i));
+            systemUsers.get(i).setEmployee(employees.get(i));
             setPermission(employees.get(i), systemUsers.get(i), permissionTypes);
         }
     }

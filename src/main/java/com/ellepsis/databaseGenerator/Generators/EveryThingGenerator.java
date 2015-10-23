@@ -20,6 +20,7 @@ import java.util.List;
  * Created by EllepsisRT on 10.10.2015.
  */
 @Component
+@ComponentScan("com.ellepsis.databaseGenerator")
 public class EveryThingGenerator {
 
     @Autowired
@@ -44,23 +45,23 @@ public class EveryThingGenerator {
     private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
 
     public void generate() throws Exception {
-        generateClientTypes();
-        loadClientTypes();
-        generateClients();
-        loadClients();
-        generateClientPhones();
-        loadClientsPhones();
+        //generateClientTypes();
+        //loadClientTypes();
+        //generateClients();
+        //loadClients();
+        //generateClientPhones();
+        //loadClientsPhones();
 
-        generateStatesCar();
-        loadStatusCar();
-        generateCars(100);
-        loadCar();
+        //generateStatesCar();
+        //loadStatusCar();
+        //generateCars(100);
+        //loadCar();
 
-        generatePermissions();
-        loadPermissions();
-        generateEmployees(500);
-        loadEmployees();
-        generateSystemUsers(500);
+        //generatePermissions();
+        //loadPermissions();
+        //generateEmployees(500);
+        //loadEmployees();
+        //generateSystemUsers(500);
         loadSystemUsers();
 
 
@@ -111,7 +112,7 @@ public class EveryThingGenerator {
     private void loadClientTypes() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         final CollectionType clientTypeListType = mapper.getTypeFactory().constructCollectionType(List.class, ClientType.class);
-        File file = new File(basePath + "\\jsonGeneratedFiles\\Clients.json");
+        File file = new File(basePath + "\\jsonGeneratedFiles\\ClientTypes.json");
         List<ClientType> clientTypes = mapper.readValue(file, clientTypeListType);
         clientTypeRepository.save(clientTypes);
     }

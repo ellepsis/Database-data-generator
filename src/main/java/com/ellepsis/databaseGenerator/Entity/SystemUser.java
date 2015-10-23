@@ -1,6 +1,8 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+import org.yaml.snakeyaml.events.Event;
 
 import javax.persistence.*;
 
@@ -9,11 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "System_User")
-public class SystemUser {
-
-    @OneToOne(targetEntity = Employee.class)
-    @JoinColumn(name = "Employee_ID", unique = true)
-    private Employee EmployeeID;
+public class SystemUser extends GenericEntity {
 
     @Column(name = "User_Name", unique = true)
     private String userName;
@@ -26,13 +24,9 @@ public class SystemUser {
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;
 
-    public Employee getEmployeeID() {
-        return EmployeeID;
-    }
-
-    public void setEmployeeID(Employee employeeID) {
-        EmployeeID = employeeID;
-    }
+    @OneToOne
+    @MapsId
+    private Employee employee;
 
     public String getUserName() {
         return userName;
@@ -58,4 +52,11 @@ public class SystemUser {
         this.permissionsTypeId = permissionsTypeId;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

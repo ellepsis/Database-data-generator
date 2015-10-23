@@ -1,6 +1,6 @@
 package com.ellepsis.databaseGenerator.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -41,6 +41,9 @@ public class Employee extends GenericEntity{
 
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
+
+    @OneToOne(targetEntity = SystemUser.class, cascade = CascadeType.ALL)
+    private SystemUser systemUser;
 
     public String getFirstName() {
         return firstName;
@@ -120,5 +123,21 @@ public class Employee extends GenericEntity{
 
     public void setDismissalDate(Date dismissalDate) {
         this.dismissalDate = dismissalDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public SystemUser getSystemUser() {
+        return systemUser;
+    }
+
+    public void setSystemUser(SystemUser systemUser) {
+        this.systemUser = systemUser;
     }
 }

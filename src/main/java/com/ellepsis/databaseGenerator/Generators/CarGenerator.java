@@ -46,8 +46,12 @@ public class CarGenerator {
 
         String brand_and_mark = tmp_cars.get(random.nextInt(tmp_cars.size()));
         int splitIndex = brand_and_mark.indexOf(" ");
-        car.setBrand(brand_and_mark.substring(0, splitIndex));
-        car.setModel(brand_and_mark.substring(splitIndex + 1));
+        String brand = brand_and_mark.substring(0, splitIndex);
+        brand = brand.length()>19?brand.substring(0, 19):brand;
+        car.setBrand(brand);
+        String model = brand_and_mark.substring(splitIndex + 1);
+        model = model.length()>19?model.substring(0, 19):model;
+        car.setModel(model);
 
         car.setReleaseYear(2000 + random.nextInt(15) + "");
 

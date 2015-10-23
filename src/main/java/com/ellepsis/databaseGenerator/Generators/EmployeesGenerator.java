@@ -38,9 +38,10 @@ public class EmployeesGenerator {
         if (employee.getGender() == 'M') employee.setMiddleName(middleName + "ovich");
         else employee.setMiddleName(middleName + "ovna");
         employee.setPassportNumber(String.format("%10d", r.nextLong() % 9999999999L));
+        setPosition(employee);
     }
 
-    private void setPositionAndPermission(Employee employee) {
+    private void setPosition(Employee employee) {
         final String directorPosition = "Директор";
         final String cleanerPosition = "Уборщица";
         final String administratorPosition = "Администратор";
