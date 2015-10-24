@@ -42,9 +42,6 @@ public class Employee extends GenericEntity{
     @Column(name = "Dismissal_Date")
     private Date dismissalDate;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
-    private SystemUser systemUser;
-
     public String getFirstName() {
         return firstName;
     }
@@ -133,11 +130,4 @@ public class Employee extends GenericEntity{
         this.address = address;
     }
 
-    public SystemUser getSystemUser() {
-        return systemUser;
-    }
-
-    public void setSystemUser(SystemUser systemUser) {
-        this.systemUser = systemUser;
-    }
 }

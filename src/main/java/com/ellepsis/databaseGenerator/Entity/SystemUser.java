@@ -15,9 +15,6 @@ import javax.persistence.*;
 public class SystemUser{
 
     @Id
-    @GeneratedValue(generator = "generator")
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "employee"))
     @Column(name = "Employee_id", unique = true, nullable = false)
     private Long id;
 
@@ -31,11 +28,6 @@ public class SystemUser{
     @ManyToOne
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;
-
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
-    private Employee employee;
 
     public Long getId() {
         return id;
@@ -69,12 +61,4 @@ public class SystemUser{
         this.permissionsTypeId = permissionsTypeId;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-        this.id = employee.getId();
-    }
 }

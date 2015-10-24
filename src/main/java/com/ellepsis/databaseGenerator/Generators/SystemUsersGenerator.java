@@ -82,8 +82,6 @@ public class SystemUsersGenerator {
         List<PermissionType> permissionTypes = permissionTypeRepository.findAll();
         List<Employee> employees = employeeRepository.findAll();
         for (int i = 0; i < employees.size(); i++) {
-            systemUsers.get(i).setEmployee(employees.get(i));
-            employees.get(i).setSystemUser(systemUsers.get(i));
             systemUsers.get(i).setId(employees.get(i).getId());
             setPermission(employees.get(i), systemUsers.get(i), permissionTypes);
         }

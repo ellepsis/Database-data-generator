@@ -62,7 +62,7 @@ public class EveryThingGenerator {
         //generateEmployees(500);
         //loadEmployees();
         //generateSystemUsers(500);
-        loadSystemUsers();
+        //loadSystemUsers();
 
 
     }
@@ -210,6 +210,9 @@ public class EveryThingGenerator {
         final CollectionType systemUserListType = mapper.getTypeFactory().constructCollectionType(List.class, SystemUser.class);
         List<SystemUser> systemUsers = mapper.readValue(file, systemUserListType);
         new SystemUsersGenerator().listRepair(systemUsers, permissionTypeRepository, employeeRepository);
+        for (SystemUser systemUser : systemUsers){
+            systemUserRepository.save(systemUser);
+        }
         systemUserRepository.save(systemUsers);
     }
 
