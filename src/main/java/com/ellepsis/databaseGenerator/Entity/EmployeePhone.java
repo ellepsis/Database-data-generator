@@ -3,6 +3,8 @@ package com.ellepsis.databaseGenerator.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * Created by EllepsisRT on 05.10.2015.
