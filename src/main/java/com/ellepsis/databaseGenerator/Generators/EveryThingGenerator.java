@@ -42,6 +42,8 @@ public class EveryThingGenerator {
     private StatusCarRepository statusCarRepository;
     @Autowired
     private CarRepository carRepository;
+    @Autowired
+    private DispatcherRepository dispatcherRepository;
 
     /* !!!---> change for you <---!!! */
     //private String basePath = "D:\\DatabaseGenerator";
@@ -69,6 +71,9 @@ public class EveryThingGenerator {
         //generateEmployeePhones();
         //loadEmployeePhones();
 
+        //generateDispatchers();
+        //loadDispatchers();
+
     }
 
     public void dbRepair() throws Exception{
@@ -83,6 +88,8 @@ public class EveryThingGenerator {
         loadEmployees();
         loadSystemUsers();
         loadEmployeePhones();
+
+        loadDispatchers();
     }
 
     /*=============== Car ===============*/
@@ -258,5 +265,23 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath + "\\jsonGeneratedFiles\\EmployeePhones.json");
         mapper.writeValue(file, employeePhones);
+    }
+
+    /*=============== Dispatchers ====================*/
+
+    private void loadDispatchers() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Dispatchers.json");
+        final CollectionType DispatcherListType = mapper.getTypeFactory().constructCollectionType(List.class, Dispatcher.class);
+        List<Dispatcher> dispatchers = mapper.readValue(file, DispatcherListType);
+        new DispatcherGenerator().listRepair(dispatchers, employeeRepository);
+        dispatcherRepository.save(dispatchers);
+    }
+
+    private void generateDispatchers() throws IOException {
+        List<Dispatcher> dispatchers = new DispatcherGenerator().generate(employeeRepository);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Dispatchers.json");
+        mapper.writeValue(file, dispatchers);
     }
 }

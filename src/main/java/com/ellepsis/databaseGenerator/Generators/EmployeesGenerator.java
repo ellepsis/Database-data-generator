@@ -16,6 +16,12 @@ import java.util.Random;
  */
 public class EmployeesGenerator {
 
+    public final static String directorPosition = "Директор";
+    public final static String cleanerPosition = "Уборщица";
+    public final static String administratorPosition = "Администратор";
+    public final static String driverPosition = "Водитель";
+    public final static String dispatcherPosition = "Диспетчер";
+
     Random r = new Random();
 
     public List<Employee> generateEmployees(int count) throws URISyntaxException {
@@ -42,11 +48,6 @@ public class EmployeesGenerator {
     }
 
     private void setPosition(Employee employee) {
-        final String directorPosition = "Директор";
-        final String cleanerPosition = "Уборщица";
-        final String administratorPosition = "Администратор";
-        final String driverPosition = "Водитель";
-        final String dispatcherPosition = "Диспетчер";
         int rValue = r.nextInt(1000);
         String position;
         if (rValue < 3){
