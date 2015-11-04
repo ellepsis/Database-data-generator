@@ -1,4 +1,2 @@
-Remove the id field from system user table. Use employee id instead.
-Make one to one relationship between employee and system user.
 Change the car status table.
 Change ID bytes count

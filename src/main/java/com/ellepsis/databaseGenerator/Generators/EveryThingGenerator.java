@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,8 @@ public class EveryThingGenerator {
     private CarRepository carRepository;
     @Autowired
     private DispatcherRepository dispatcherRepository;
+    @Autowired
+    private DriverRepository driverRepository;
 
     /* !!!---> change for you <---!!! */
     //private String basePath = "D:\\DatabaseGenerator";
@@ -73,7 +76,8 @@ public class EveryThingGenerator {
 
         //generateDispatchers();
         //loadDispatchers();
-
+        //generateDrivers();
+        //loadDrivers();
     }
 
     public void dbRepair() throws Exception{
@@ -90,6 +94,7 @@ public class EveryThingGenerator {
         loadEmployeePhones();
 
         loadDispatchers();
+        loadDrivers();
     }
 
     /*=============== Car ===============*/
@@ -186,12 +191,6 @@ public class EveryThingGenerator {
         mapper.writeValue(file, clientPhones);
     }
 
-    private void generateEmployeesAndAllWithIt(int count) throws URISyntaxException, IOException {
-        generatePermissions();
-        generateEmployees(count);
-        generateSystemUsers(count);
-    }
-
     /*=============== Employees ===============*/
 
     private void loadEmployees() throws IOException {
@@ -283,5 +282,23 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath + "\\jsonGeneratedFiles\\Dispatchers.json");
         mapper.writeValue(file, dispatchers);
+    }
+
+    /*=============== Drivers ========================*/
+
+    private void loadDrivers() throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Drivers.json");
+        final CollectionType DriverListType = mapper.getTypeFactory().constructCollectionType(List.class, Driver.class);
+        List<Driver> drivers = mapper.readValue(file, DriverListType);
+        new DriverGenerator().listRepair(drivers, employeeRepository);
+        driverRepository.save(drivers);
+    }
+
+    private void generateDrivers() throws IOException{
+        List<Driver> drivers = new DriverGenerator().generate(employeeRepository);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Drivers.json");
+        mapper.writeValue(file, drivers);
     }
 }

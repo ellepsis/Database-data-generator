@@ -24,7 +24,7 @@ public class Driver extends GenericEntity{
     private  String categories;
 
     @Column(name = "Experience")
-    private Date experience;
+    private String experience;
 
     public Employee getEmployeeId() {
         return employeeId;
@@ -50,11 +50,11 @@ public class Driver extends GenericEntity{
         this.categories = categories;
     }
 
-    public Date getExperience() {
+    public String getExperience() {
         return experience;
     }
 
-    public void setExperience(Date experience) {
+    public void setExperience(String experience) {
         this.experience = experience;
     }
 }
