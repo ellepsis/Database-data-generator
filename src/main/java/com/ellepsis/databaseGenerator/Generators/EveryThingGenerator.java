@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by EllepsisRT on 10.10.2015.
@@ -35,6 +36,8 @@ public class EveryThingGenerator {
     private PermissionTypeRepository permissionTypeRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeePhoneRepository employeePhoneRepository;
     @Autowired
     private StatusCarRepository statusCarRepository;
     @Autowired
@@ -63,8 +66,23 @@ public class EveryThingGenerator {
         //loadEmployees();
         //generateSystemUsers(500);
         //loadSystemUsers();
+        //generateEmployeePhones();
+        //loadEmployeePhones();
 
+    }
 
+    public void dbRepair() throws Exception{
+        loadClientTypes();
+        loadClients();
+        loadClientsPhones();
+
+        loadStatusCar();
+        loadCar();
+
+        loadPermissions();
+        loadEmployees();
+        loadSystemUsers();
+        loadEmployeePhones();
     }
 
     /*=============== Car ===============*/
@@ -222,5 +240,23 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\SystemUsers.json");
         mapper.writeValue(file, systemUsers);
         //systemUserRepository.save(systemUsers);
+    }
+
+    /*=============== Employee Phones ================*/
+
+    private void loadEmployeePhones() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\EmployeePhones.json");
+        final CollectionType EmployeePhoneListType = mapper.getTypeFactory().constructCollectionType(List.class, EmployeePhone.class);
+        List<EmployeePhone> employeePhones = mapper.readValue(file, EmployeePhoneListType);
+        new EmployeePhoneGenerator().listRepair(employeePhones, employeeRepository);
+        employeePhoneRepository.save(employeePhones);
+    }
+
+    private void generateEmployeePhones() throws Exception {
+        List<EmployeePhone> employeePhones = new EmployeePhoneGenerator().generate(employeeRepository);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\EmployeePhones.json");
+        mapper.writeValue(file, employeePhones);
     }
 }
