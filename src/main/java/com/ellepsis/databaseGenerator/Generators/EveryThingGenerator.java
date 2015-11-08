@@ -2,22 +2,16 @@ package com.ellepsis.databaseGenerator.Generators;
 
 import com.ellepsis.databaseGenerator.Entity.*;
 import com.ellepsis.databaseGenerator.Repository.*;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.UniqueConstraint;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by EllepsisRT on 10.10.2015.
@@ -156,8 +150,9 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         final CollectionType carRepairType = mapper.getTypeFactory().constructCollectionType(List.class, CarRepair.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\CarRepairs.json");
-        List<CarRepair> statesCar = mapper.readValue(file, carRepairType);
-        carRepairRepository.save(statesCar);
+        List<CarRepair> carRepairs = mapper.readValue(file, carRepairType);
+        new CarRepairGenerator().listRepair(carRepairs, carRepository);
+        carRepairRepository.save(carRepairs);
     }
 
     private void generateCarRepairs(int count) throws URISyntaxException, IOException {
