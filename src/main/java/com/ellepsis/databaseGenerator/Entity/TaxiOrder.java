@@ -1,6 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "Taxi_Order")
+@JsonIgnoreProperties({"statusOrderId", "Dispatcher_Id", "Driver_Id", "Car_Id", "Client_Id", "Phone_Id"})
 public class TaxiOrder extends GenericEntity{
 
     @JsonIgnore

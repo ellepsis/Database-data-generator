@@ -26,9 +26,10 @@ public class OrdersGenerator {
             RestTemplate restTemplate = new RestTemplate();
             URI uri = new URI("https://mockaroo.com/2e9bf060/download?count=1000&key=bfda25a0");
             TaxiOrder[] taxiOrdersArray = restTemplate.getForObject(uri, TaxiOrder[].class);
-            for (int j = taxiOrders.size(); j < count; j++) {
-                processTaxiOrder(taxiOrdersArray[j]);
-                taxiOrders.add(taxiOrdersArray[j]);
+            int k = 0;
+            for (int j = 0; j < 1000 && taxiOrders.size()<count; j++) {
+                processTaxiOrder(taxiOrdersArray[k]);
+                taxiOrders.add(taxiOrdersArray[k++]);
             }
         }
         listRepair(taxiOrders, carRepository, clientRepository, dispatcherRepository, driverRepository,
@@ -37,10 +38,12 @@ public class OrdersGenerator {
     }
 
     private void processTaxiOrder(TaxiOrder taxiOrder) {
-        if (taxiOrder.getPreorderDate().compareTo(taxiOrder.getOrderDate()) < 0) {
-            taxiOrder.setPreorderDate(new Date(taxiOrder.getOrderDate().getTime() + 1000 * (r.nextInt(60 * 60 * 24 * 2) + 60 * 60)));
+        if (taxiOrder.getPreorderDate() != null) {
+            if (taxiOrder.getPreorderDate().compareTo(taxiOrder.getOrderDate()) < 0) {
+                taxiOrder.setPreorderDate(new Date(taxiOrder.getOrderDate().getTime() + 1000 * (r.nextInt(60 * 60 * 24 * 2) + 60 * 60)));
+            }
         }
-        if (taxiOrder.getOrderComment().length() > 254)
+        if (taxiOrder.getOrderComment() != null && taxiOrder.getOrderComment().length() > 254)
             taxiOrder.setOrderComment(taxiOrder.getOrderComment().substring(0, 254));
         if (taxiOrder.getStartPoint().length() > 254)
             taxiOrder.setStartPointId(taxiOrder.getStartPoint().substring(0, 254));
