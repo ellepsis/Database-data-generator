@@ -24,7 +24,7 @@ public class OrdersGenerator {
         List<TaxiOrder> taxiOrders = new ArrayList<>();
         for (int i = 0; i <= count / 1000; i++) {
             RestTemplate restTemplate = new RestTemplate();
-            URI uri = new URI("https://mockaroo.com/2e9bf060/download?count=1000&key=bfda25a0");
+            URI uri = new URI("https://mockaroo.com/7837bcf0/download?count=1000&key=04eaa770");
             TaxiOrder[] taxiOrdersArray = restTemplate.getForObject(uri, TaxiOrder[].class);
             int k = 0;
             for (int j = 0; j < 1000 && taxiOrders.size()<count; j++) {

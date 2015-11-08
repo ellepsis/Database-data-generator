@@ -1,8 +1,6 @@
 package com.ellepsis.databaseGenerator.Generators;
 
 import com.ellepsis.databaseGenerator.Entity.StatusOrder;
-import com.sun.xml.internal.ws.api.message.Packet;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -52,8 +52,8 @@ public class EveryThingGenerator {
     private StatusOrderRepository statusOrderRepository;
 
     /* !!!---> change for you <---!!! */
-    //private String basePath = "D:\\DatabaseGenerator";
-    private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
+    private String basePath = "D:\\DatabaseGenerator";
+    //private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
 
     public void generate() throws Exception {
         //generateClientTypes();
@@ -90,7 +90,7 @@ public class EveryThingGenerator {
         //generateStatusOrder();
         //loadStatusOrder();
 
-        generateOrders(2000);
+        generateOrders(60000);
         loadOrders();
 
         //dbRepair();

@@ -2,7 +2,6 @@ package com.ellepsis.databaseGenerator.Generators;
 
 import com.ellepsis.databaseGenerator.Entity.Employee;
 import com.ellepsis.databaseGenerator.Entity.WorkDate;
-import com.ellepsis.databaseGenerator.Repository.ClientRepository;
 import com.ellepsis.databaseGenerator.Repository.EmployeeRepository;
 
 import java.util.*;
@@ -52,8 +51,8 @@ public class WorkDateGenerator {
 
     public List<WorkDate> listRepair(List<WorkDate> workDates, EmployeeRepository employeeRepository){
         List<WorkDate> newWorkDates;
-        long employeeCount = employeeRepository.count();
-        newWorkDates = generate((int) (workDates.size()/employeeCount), employeeRepository);
+        int employeeCount = (int)employeeRepository.count();
+        newWorkDates = generate(workDates.size()/employeeCount, employeeRepository);
         return newWorkDates;
     }
 }
