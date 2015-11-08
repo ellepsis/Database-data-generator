@@ -52,8 +52,8 @@ public class EveryThingGenerator {
     private StatusOrderRepository statusOrderRepository;
 
     /* !!!---> change for you <---!!! */
-    //private String basePath = "D:\\DatabaseGenerator";
-    private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
+    private String basePath = "D:\\DatabaseGenerator";
+    //private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
 
     public void generate() throws Exception {
         //generateClientTypes();
@@ -83,7 +83,9 @@ public class EveryThingGenerator {
         //loadDispatchers();
         //generateDrivers();
         //loadDrivers();
+        //dbRepair();
 
+        //generateWorkDates(50);
     }
 
     public void dbRepair() throws Exception{
@@ -102,6 +104,25 @@ public class EveryThingGenerator {
 
         loadDispatchers();
         loadDrivers();
+    }
+
+    /*=============== Work Date ===============*/
+
+
+    private void loadWorkDate() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        final CollectionType workDatesListType = mapper.getTypeFactory().constructCollectionType(List.class, WorkDate.class);
+        File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDate.json");
+        List<WorkDate> workDates = mapper.readValue(file, workDatesListType);
+        workDateRepository.save(workDates);
+    }
+
+    private void generateWorkDates(int count) throws IOException {
+        WorkDateGenerator workDateGenerator = new WorkDateGenerator();
+        List<WorkDate> workDates = workDateGenerator.generate(50, employeeRepository);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDates.json");
+        mapper.writeValue(file, workDates);
     }
 
     /*=============== Car ===============*/
@@ -162,7 +183,7 @@ public class EveryThingGenerator {
         mapper.writeValue(file, carRepairs);
     }
 
-    /*=============== Client ===============*/
+    /*=============== Client Type ===============*/
 
     private void loadClientTypes() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -180,6 +201,8 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\ClientTypes.json");
         mapper.writeValue(file, clientTypes);
     }
+
+    /*=============== Client ===============*/
 
     private void loadClients() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
