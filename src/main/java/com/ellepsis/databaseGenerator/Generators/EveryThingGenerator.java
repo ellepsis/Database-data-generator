@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.UniqueConstraint;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -44,6 +45,8 @@ public class EveryThingGenerator {
     @Autowired
     private CarRepository carRepository;
     @Autowired
+    private CarRepairRepository carRepairRepository;
+    @Autowired
     private DispatcherRepository dispatcherRepository;
     @Autowired
     private DriverRepository driverRepository;
@@ -64,6 +67,8 @@ public class EveryThingGenerator {
         //loadStatusCar();
         //generateCars(100);
         //loadCar();
+        //generateCarRepairs(50);
+        //loadCarRepairs();
 
         //generatePermissions();
         //loadPermissions();
@@ -78,6 +83,7 @@ public class EveryThingGenerator {
         //loadDispatchers();
         //generateDrivers();
         //loadDrivers();
+
     }
 
     public void dbRepair() throws Exception{
@@ -87,6 +93,7 @@ public class EveryThingGenerator {
 
         loadStatusCar();
         loadCar();
+        loadCarRepairs();
 
         loadPermissions();
         loadEmployees();
@@ -95,6 +102,7 @@ public class EveryThingGenerator {
 
         loadDispatchers();
         loadDrivers();
+
     }
 
     /*=============== Car ===============*/
@@ -135,6 +143,23 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\StatesCar.json");
         mapper.writeValue(file, statesCar);
         //statusCarRepository.save(statusCarGenerator.generateStatesCar());
+    }
+
+    /*=============== Car Repairs ===============*/
+
+    private void loadCarRepairs() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        final CollectionType carRepairType = mapper.getTypeFactory().constructCollectionType(List.class, CarRepair.class);
+        File file = new File(basePath + "\\jsonGeneratedFiles\\CarRepairs.json");
+        List<CarRepair> statesCar = mapper.readValue(file, carRepairType);
+        carRepairRepository.save(statesCar);
+    }
+
+    private void generateCarRepairs(int count) throws URISyntaxException, IOException {
+        List<CarRepair> carRepairs = new CarRepairGenerator().generate(carRepository, count);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\CarRepairs.json");
+        mapper.writeValue(file, carRepairs);
     }
 
     /*=============== Client ===============*/

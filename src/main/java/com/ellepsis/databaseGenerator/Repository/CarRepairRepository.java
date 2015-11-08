@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by EllepsisRT on 08.10.2015.
  */
 @Repository
-public interface RepairRepository extends JpaRepository<CarRepair, Long> {
+public interface CarRepairRepository extends JpaRepository<CarRepair, Long> {
 }
