@@ -50,6 +50,12 @@ public class EveryThingGenerator {
     private DispatcherRepository dispatcherRepository;
     @Autowired
     private DriverRepository driverRepository;
+    @Autowired
+    private TaxiOrderRepository taxiOrderRepository;
+    @Autowired
+    private WorkDateRepository workDateRepository;
+    @Autowired
+    private StatusOrderRepository statusOrderRepository;
 
     /* !!!---> change for you <---!!! */
     //private String basePath = "D:\\DatabaseGenerator";
@@ -102,7 +108,6 @@ public class EveryThingGenerator {
 
         loadDispatchers();
         loadDrivers();
-
     }
 
     /*=============== Car ===============*/
