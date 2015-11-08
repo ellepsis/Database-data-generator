@@ -83,9 +83,11 @@ public class EveryThingGenerator {
         //loadDispatchers();
         //generateDrivers();
         //loadDrivers();
-        //dbRepair();
 
         //generateWorkDates(50);
+        loadWorkDate();
+
+        //dbRepair();
     }
 
     public void dbRepair() throws Exception{
@@ -101,9 +103,12 @@ public class EveryThingGenerator {
         loadEmployees();
         loadSystemUsers();
         loadEmployeePhones();
+        loadWorkDate();
 
         loadDispatchers();
         loadDrivers();
+
+
     }
 
     /*=============== Work Date ===============*/
@@ -112,8 +117,9 @@ public class EveryThingGenerator {
     private void loadWorkDate() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         final CollectionType workDatesListType = mapper.getTypeFactory().constructCollectionType(List.class, WorkDate.class);
-        File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDate.json");
+        File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDates.json");
         List<WorkDate> workDates = mapper.readValue(file, workDatesListType);
+        new WorkDateGenerator().listRepair(workDates, employeeRepository);
         workDateRepository.save(workDates);
     }
 

@@ -49,4 +49,12 @@ public class WorkDateGenerator {
         workDate.setEndDate(end_data);
         return  workDate;
     }
+
+    public List<WorkDate> listRepair(List<WorkDate> workDates, EmployeeRepository employeeRepository){
+        List<WorkDate> newWorkDates;
+        long employeeCount = employeeRepository.count();
+        newWorkDates = generate((int) (workDates.size()/employeeCount), employeeRepository);
+        workDates = newWorkDates;
+        return newWorkDates;
+    }
 }
