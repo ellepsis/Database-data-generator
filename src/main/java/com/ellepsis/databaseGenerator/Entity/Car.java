@@ -12,6 +12,8 @@ import java.time.Year;
 @Table(name = "Car")
 public class Car extends GenericEntity{
 
+
+
     @Column(name = "Brand", nullable = false)
     private String brand;
 

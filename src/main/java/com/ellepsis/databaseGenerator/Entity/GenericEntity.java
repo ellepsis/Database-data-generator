@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class GenericEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     @Column(name = "ID")
     private Long id;
 

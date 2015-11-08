@@ -57,7 +57,7 @@ public class EveryThingGenerator {
 
     public void generate() throws Exception {
         //generateClientTypes();
-        loadClientTypes();
+        //loadClientTypes();
         //generateClients();
         //loadClients();
         //generateClientPhones();
@@ -93,11 +93,11 @@ public class EveryThingGenerator {
         //generateOrders(60000);
         //loadOrders();
 
-        //dbRepair();
+        dbRepair();
     }
 
     public void dbRepair() throws Exception{
-        loadClientTypes();
+        //loadClientTypes();
         loadClients();
         loadClientsPhones();
 
