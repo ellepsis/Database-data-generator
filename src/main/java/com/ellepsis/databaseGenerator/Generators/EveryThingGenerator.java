@@ -349,4 +349,25 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\Drivers.json");
         mapper.writeValue(file, drivers);
     }
+
+    /*================== Orders ======================*/
+    private void loadOrders() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Orders.json");
+        final CollectionType taxiOrderType = mapper.getTypeFactory().constructCollectionType(List.class, TaxiOrder.class);
+        List<TaxiOrder> orders = mapper.readValue(file, taxiOrderType);
+        new OrdersGenerator().listRepair(orders, carRepository, clientRepository,
+                dispatcherRepository, driverRepository,
+                clientPhoneRepository, statusOrderRepository);
+        taxiOrderRepository.save(orders);
+    }
+
+    private void generateOrders(int count) throws URISyntaxException, IOException {
+        List<TaxiOrder> orders = new OrdersGenerator().generate(count, carRepository, clientRepository,
+                dispatcherRepository, driverRepository,
+                clientPhoneRepository, statusOrderRepository);
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(basePath + "\\jsonGeneratedFiles\\Orders.json");
+        mapper.writeValue(file, orders);
+    }
 }
