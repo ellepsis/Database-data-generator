@@ -25,6 +25,11 @@ public class SystemUser{
     private String password;
 
     @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "Employee_id")
+    private Employee employee;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Permissions_Type_Id")
     private PermissionType permissionsTypeId;
@@ -61,4 +66,11 @@ public class SystemUser{
         this.permissionsTypeId = permissionsTypeId;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

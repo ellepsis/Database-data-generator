@@ -83,6 +83,7 @@ public class SystemUsersGenerator {
         List<Employee> employees = employeeRepository.findAll();
         for (int i = 0; i < employees.size(); i++) {
             systemUsers.get(i).setId(employees.get(i).getId());
+            systemUsers.get(i).setEmployee(employees.get(i));
             setPermission(employees.get(i), systemUsers.get(i), permissionTypes);
         }
     }
