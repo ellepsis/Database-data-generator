@@ -34,10 +34,10 @@ public class TaxiOrder extends GenericEntity{
     private Date preorderDate;
 
     @Column(name = "Start_Point")
-    private String startPointId;
+    private String startPoint;
 
     @Column(name = "End_Point")
-    private String endPointId;
+    private String endPoint;
 
     @JsonIgnore
     @ManyToOne
@@ -98,20 +98,20 @@ public class TaxiOrder extends GenericEntity{
         this.preorderDate = preorderDate;
     }
 
-    public String getStartPointId() {
-        return startPointId;
+    public String getStartPoint() {
+        return startPoint;
     }
 
-    public void setStartPointId(String startPointId) {
-        this.startPointId = startPointId;
+    public void setStartPointId(String startPoint) {
+        this.startPoint = startPoint;
     }
 
-    public String getEndPointId() {
-        return endPointId;
+    public String getEndPoint() {
+        return endPoint;
     }
 
-    public void setEndPointId(String endPointId) {
-        this.endPointId = endPointId;
+    public void setEndPoint(String endPoint) {
+        this.endPoint = endPoint;
     }
 
     public Car getCarId() {
