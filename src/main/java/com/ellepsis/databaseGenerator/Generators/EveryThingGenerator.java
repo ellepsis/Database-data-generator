@@ -52,12 +52,12 @@ public class EveryThingGenerator {
     private StatusOrderRepository statusOrderRepository;
 
     /* !!!---> change for you <---!!! */
-    private String basePath = "D:\\DatabaseGenerator";
-    //private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
+    //private String basePath = "D:\\DatabaseGenerator";
+    private String basePath = "C:\\Users\\EllepsisRT\\Documents\\IdeaProjects\\DatabaseGenerator";
 
     public void generate() throws Exception {
         //generateClientTypes();
-        //loadClientTypes();
+        loadClientTypes();
         //generateClients();
         //loadClients();
         //generateClientPhones();
@@ -90,8 +90,8 @@ public class EveryThingGenerator {
         //generateStatusOrder();
         //loadStatusOrder();
 
-        generateOrders(60000);
-        loadOrders();
+        //generateOrders(60000);
+        //loadOrders();
 
         //dbRepair();
     }
@@ -128,6 +128,7 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDates.json");
         List<WorkDate> workDates = mapper.readValue(file, workDatesListType);
         workDates = new WorkDateGenerator().listRepair(workDates, employeeRepository);
+        setNullID(workDates);
         workDateRepository.save(workDates);
     }
 
@@ -148,6 +149,7 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\Cars.json");
         List<Car> cars = mapper.readValue(file, carsListType);
         new CarGenerator().listRepair(cars, statusCarRepository);
+        setNullID(cars);
         carRepository.save(cars);
     }
 
@@ -168,6 +170,7 @@ public class EveryThingGenerator {
         final CollectionType statusCarListType = mapper.getTypeFactory().constructCollectionType(List.class, StatusCar.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\StatesCar.json");
         List<StatusCar> statesCar = mapper.readValue(file, statusCarListType);
+        setNullID(statesCar);
         statusCarRepository.save(statesCar);
     }
 
@@ -188,6 +191,7 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\CarRepairs.json");
         List<CarRepair> carRepairs = mapper.readValue(file, carRepairType);
         new CarRepairGenerator().listRepair(carRepairs, carRepository);
+        setNullID(carRepairs);
         carRepairRepository.save(carRepairs);
     }
 
@@ -205,6 +209,7 @@ public class EveryThingGenerator {
         final CollectionType clientTypeListType = mapper.getTypeFactory().constructCollectionType(List.class, ClientType.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\ClientTypes.json");
         List<ClientType> clientTypes = mapper.readValue(file, clientTypeListType);
+        setNullID(clientTypes);
         clientTypeRepository.save(clientTypes);
     }
 
@@ -225,6 +230,7 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\Clients.json");
         List<Client> clients = mapper.readValue(file, clientListType);
         new ClientsGenerator().listRepair(clients, clientTypeRepository);
+        setNullID(clients);
         clientRepository.save(clients);
     }
 
@@ -244,6 +250,7 @@ public class EveryThingGenerator {
         final CollectionType clientPhonesType = mapper.getTypeFactory().constructCollectionType(List.class, ClientPhone.class);
         List<ClientPhone> clientPhones = mapper.readValue(file, clientPhonesType);
         new ClientPhonesGenerator().listRepair(clientPhones, clientRepository);
+        setNullID(clientPhones);
         clientPhoneRepository.save(clientPhones);
     }
 
@@ -261,6 +268,7 @@ public class EveryThingGenerator {
         final CollectionType employeesListType = mapper.getTypeFactory().constructCollectionType(List.class, Employee.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\Employees.json");
         List<Employee> employees = mapper.readValue(file, employeesListType);
+        setNullID(employees);
         employeeRepository.save(employees);
     }
 
@@ -278,6 +286,7 @@ public class EveryThingGenerator {
         final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, PermissionType.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\Permissions.json");
         List<PermissionType> permissions = mapper.readValue(file, permissionListType);
+        setNullID(permissions);
         permissionTypeRepository.save(permissions);
     }
 
@@ -319,6 +328,7 @@ public class EveryThingGenerator {
         final CollectionType EmployeePhoneListType = mapper.getTypeFactory().constructCollectionType(List.class, EmployeePhone.class);
         List<EmployeePhone> employeePhones = mapper.readValue(file, EmployeePhoneListType);
         new EmployeePhoneGenerator().listRepair(employeePhones, employeeRepository);
+        setNullID(employeePhones);
         employeePhoneRepository.save(employeePhones);
     }
 
@@ -337,6 +347,7 @@ public class EveryThingGenerator {
         final CollectionType DispatcherListType = mapper.getTypeFactory().constructCollectionType(List.class, Dispatcher.class);
         List<Dispatcher> dispatchers = mapper.readValue(file, DispatcherListType);
         new DispatcherGenerator().listRepair(dispatchers, employeeRepository);
+        setNullID(dispatchers);
         dispatcherRepository.save(dispatchers);
     }
 
@@ -355,6 +366,7 @@ public class EveryThingGenerator {
         final CollectionType DriverListType = mapper.getTypeFactory().constructCollectionType(List.class, Driver.class);
         List<Driver> drivers = mapper.readValue(file, DriverListType);
         new DriverGenerator().listRepair(drivers, employeeRepository);
+        setNullID(drivers);
         driverRepository.save(drivers);
     }
 
@@ -374,6 +386,7 @@ public class EveryThingGenerator {
         new OrdersGenerator().listRepair(orders, carRepository, clientRepository,
                 dispatcherRepository, driverRepository,
                 clientPhoneRepository, statusOrderRepository);
+        setNullID(orders);
         taxiOrderRepository.save(orders);
     }
 
@@ -387,11 +400,16 @@ public class EveryThingGenerator {
     }
 
     private void loadStatusOrder(){
-        List<StatusOrder> orders = new StatusOrderGenerator().generate();
-        statusOrderRepository.save(orders);
+        List<StatusOrder> statusOrders = new StatusOrderGenerator().generate();
+        setNullID(statusOrders);
+        statusOrderRepository.save(statusOrders);
     }
 
     private void generateStatusOrder(){
         List<StatusOrder> orders = new StatusOrderGenerator().generate();
+    }
+
+    private void setNullID(List<? extends GenericEntity> entities){
+        entities.forEach(entity -> entity.setId(null));
     }
 }
