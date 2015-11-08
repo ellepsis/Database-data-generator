@@ -13,7 +13,7 @@ import java.util.Date;
 public class WorkDate extends GenericEntity{
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(targetEntity = Employee.class)
     @JoinColumn(name = "Employee_Id")
     private Employee EmployeeId;
 

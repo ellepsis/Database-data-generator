@@ -54,7 +54,6 @@ public class WorkDateGenerator {
         List<WorkDate> newWorkDates;
         long employeeCount = employeeRepository.count();
         newWorkDates = generate((int) (workDates.size()/employeeCount), employeeRepository);
-        workDates = newWorkDates;
         return newWorkDates;
     }
 }

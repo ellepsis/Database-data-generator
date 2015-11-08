@@ -85,7 +85,13 @@ public class EveryThingGenerator {
         //loadDrivers();
 
         //generateWorkDates(50);
-        loadWorkDate();
+        //loadWorkDate();
+
+        //generateStatusOrder();
+        loadStatusOrder();
+
+        generateOrders(60000);
+        loadOrders();
 
         //dbRepair();
     }
@@ -107,7 +113,7 @@ public class EveryThingGenerator {
 
         loadDispatchers();
         loadDrivers();
-
+        loadStatusOrder();
 
     }
 
@@ -119,7 +125,7 @@ public class EveryThingGenerator {
         final CollectionType workDatesListType = mapper.getTypeFactory().constructCollectionType(List.class, WorkDate.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDates.json");
         List<WorkDate> workDates = mapper.readValue(file, workDatesListType);
-        new WorkDateGenerator().listRepair(workDates, employeeRepository);
+        workDates = new WorkDateGenerator().listRepair(workDates, employeeRepository);
         workDateRepository.save(workDates);
     }
 
@@ -129,6 +135,7 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath + "\\jsonGeneratedFiles\\WorkDates.json");
         mapper.writeValue(file, workDates);
+        workDateRepository.save(workDates);
     }
 
     /*=============== Car ===============*/
@@ -375,5 +382,14 @@ public class EveryThingGenerator {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(basePath + "\\jsonGeneratedFiles\\Orders.json");
         mapper.writeValue(file, orders);
+    }
+
+    private void loadStatusOrder(){
+        List<StatusOrder> orders = new StatusOrderGenerator().generate();
+        statusOrderRepository.save(orders);
+    }
+
+    private void generateStatusOrder(){
+        List<StatusOrder> orders = new StatusOrderGenerator().generate();
     }
 }
