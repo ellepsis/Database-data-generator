@@ -10,7 +10,21 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "Driver")
-public class Driver extends GenericEntity{
+public class Driver {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence_driver")
+    @SequenceGenerator(name = "id_Sequence_driver", sequenceName = "S_DRIVER")
+    @Column(name = "ID")
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @JsonIgnore
     @OneToOne

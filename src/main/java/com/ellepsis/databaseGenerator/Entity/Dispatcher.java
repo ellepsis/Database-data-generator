@@ -9,7 +9,21 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Dispatcher")
-public class Dispatcher extends GenericEntity{
+public class Dispatcher{
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence_dispatcher")
+    @SequenceGenerator(name = "id_Sequence_dispatcher", sequenceName = "S_DISPATCHER")
+    @Column(name = "ID")
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @JsonIgnore
     @OneToOne(targetEntity = Employee.class)

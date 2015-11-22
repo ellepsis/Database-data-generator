@@ -97,7 +97,7 @@ public class EveryThingGenerator {
     }
 
     public void dbRepair() throws Exception{
-        //loadClientTypes();
+        loadClientTypes();
         loadClients();
         loadClientsPhones();
 
@@ -130,6 +130,7 @@ public class EveryThingGenerator {
         workDates = new WorkDateGenerator().listRepair(workDates, employeeRepository);
         setNullID(workDates);
         workDateRepository.save(workDates);
+        System.out.println("Load work date  complete");
     }
 
     private void generateWorkDates(int count) throws IOException {
@@ -151,6 +152,7 @@ public class EveryThingGenerator {
         new CarGenerator().listRepair(cars, statusCarRepository);
         setNullID(cars);
         carRepository.save(cars);
+        System.out.println("Load car complete");
     }
 
     private void generateCars(int count) throws IOException {
@@ -170,8 +172,8 @@ public class EveryThingGenerator {
         final CollectionType statusCarListType = mapper.getTypeFactory().constructCollectionType(List.class, StatusCar.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\StatesCar.json");
         List<StatusCar> statesCar = mapper.readValue(file, statusCarListType);
-        setNullID(statesCar);
         statusCarRepository.save(statesCar);
+        System.out.println("Load status car complete");
     }
 
     private void generateStatesCar() throws IOException {
@@ -193,6 +195,7 @@ public class EveryThingGenerator {
         new CarRepairGenerator().listRepair(carRepairs, carRepository);
         setNullID(carRepairs);
         carRepairRepository.save(carRepairs);
+        System.out.println("Load car repairs complete");
     }
 
     private void generateCarRepairs(int count) throws URISyntaxException, IOException {
@@ -211,6 +214,7 @@ public class EveryThingGenerator {
         List<ClientType> clientTypes = mapper.readValue(file, clientTypeListType);
         setNullID(clientTypes);
         clientTypeRepository.save(clientTypes);
+        System.out.println("Load client types complete");
     }
 
     private void generateClientTypes() throws IOException {
@@ -232,6 +236,7 @@ public class EveryThingGenerator {
         new ClientsGenerator().listRepair(clients, clientTypeRepository);
         setNullID(clients);
         clientRepository.save(clients);
+        System.out.println("Load clients complete");
     }
 
     private void generateClients() throws Exception {
@@ -252,6 +257,7 @@ public class EveryThingGenerator {
         new ClientPhonesGenerator().listRepair(clientPhones, clientRepository);
         setNullID(clientPhones);
         clientPhoneRepository.save(clientPhones);
+
     }
 
     private void generateClientPhones() throws URISyntaxException, IOException {
@@ -270,6 +276,7 @@ public class EveryThingGenerator {
         List<Employee> employees = mapper.readValue(file, employeesListType);
         setNullID(employees);
         employeeRepository.save(employees);
+        System.out.println("Load Employees complete");
     }
 
     private void generateEmployees(int count) throws URISyntaxException, IOException {
@@ -286,8 +293,8 @@ public class EveryThingGenerator {
         final CollectionType permissionListType = mapper.getTypeFactory().constructCollectionType(List.class, PermissionType.class);
         File file = new File(basePath + "\\jsonGeneratedFiles\\Permissions.json");
         List<PermissionType> permissions = mapper.readValue(file, permissionListType);
-        setNullID(permissions);
         permissionTypeRepository.save(permissions);
+        System.out.println("Load permission type complete");
     }
 
     private void generatePermissions() throws IOException {
@@ -310,6 +317,7 @@ public class EveryThingGenerator {
             systemUserRepository.save(systemUser);
         }
         systemUserRepository.save(systemUsers);
+        System.out.println("Load system user complete");
     }
 
     private void generateSystemUsers(int count) throws URISyntaxException, IOException {
@@ -329,6 +337,7 @@ public class EveryThingGenerator {
         List<EmployeePhone> employeePhones = mapper.readValue(file, EmployeePhoneListType);
         new EmployeePhoneGenerator().listRepair(employeePhones, employeeRepository);
         setNullID(employeePhones);
+        System.out.println("Load Employee phones complete");
         employeePhoneRepository.save(employeePhones);
     }
 
@@ -347,7 +356,7 @@ public class EveryThingGenerator {
         final CollectionType DispatcherListType = mapper.getTypeFactory().constructCollectionType(List.class, Dispatcher.class);
         List<Dispatcher> dispatchers = mapper.readValue(file, DispatcherListType);
         new DispatcherGenerator().listRepair(dispatchers, employeeRepository);
-        setNullID(dispatchers);
+        System.out.println("Load dispatchers complete");
         dispatcherRepository.save(dispatchers);
     }
 
@@ -366,7 +375,7 @@ public class EveryThingGenerator {
         final CollectionType DriverListType = mapper.getTypeFactory().constructCollectionType(List.class, Driver.class);
         List<Driver> drivers = mapper.readValue(file, DriverListType);
         new DriverGenerator().listRepair(drivers, employeeRepository);
-        setNullID(drivers);
+        System.out.println("Load drivers complete");
         driverRepository.save(drivers);
     }
 
@@ -388,6 +397,7 @@ public class EveryThingGenerator {
                 clientPhoneRepository, statusOrderRepository);
         setNullID(orders);
         taxiOrderRepository.save(orders);
+        System.out.println("Load Order complete");
     }
 
     private void generateOrders(int count) throws URISyntaxException, IOException {
@@ -401,8 +411,8 @@ public class EveryThingGenerator {
 
     private void loadStatusOrder(){
         List<StatusOrder> statusOrders = new StatusOrderGenerator().generate();
-        setNullID(statusOrders);
         statusOrderRepository.save(statusOrders);
+        System.out.println("Load Status Order complete");
     }
 
     private void generateStatusOrder(){
@@ -410,6 +420,6 @@ public class EveryThingGenerator {
     }
 
     private void setNullID(List<? extends GenericEntity> entities){
-        entities.forEach(entity -> entity.setId(null));
+        entities.forEach(entity -> entity.setId(new Long(2)));
     }
 }

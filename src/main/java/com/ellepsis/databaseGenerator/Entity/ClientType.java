@@ -1,6 +1,7 @@
 package com.ellepsis.databaseGenerator.Entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by EllepsisRT on 07.10.2015.
@@ -12,8 +13,8 @@ public class ClientType extends GenericEntity{
     @Column(name = "Description")
     private String description;
 
-    @Column(name = "Discount", nullable = false)
-    private float discount;
+    @Column(name = "Discount", nullable = false, columnDefinition="Number(19,2)")
+    private BigDecimal discount;
 
     public String getDescription() {
         return description;
@@ -23,11 +24,11 @@ public class ClientType extends GenericEntity{
         this.description = description;
     }
 
-    public float getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 }
