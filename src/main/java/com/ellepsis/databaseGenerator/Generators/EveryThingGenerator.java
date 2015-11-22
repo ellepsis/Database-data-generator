@@ -39,6 +39,8 @@ public class EveryThingGenerator {
     @Autowired
     private CarRepository carRepository;
     @Autowired
+    private CarOwnerRepository carOwnerRepository;
+    @Autowired
     private CarRepairRepository carRepairRepository;
     @Autowired
     private DispatcherRepository dispatcherRepository;
@@ -90,6 +92,8 @@ public class EveryThingGenerator {
         //generateStatusOrder();
         //loadStatusOrder();
 
+        //loadCarOwners();
+
         //generateOrders(60000);
         //loadOrders();
 
@@ -115,6 +119,7 @@ public class EveryThingGenerator {
         loadDrivers();
         loadStatusOrder();
 
+        loadCarOwners();
         loadOrders();
 
     }
@@ -163,6 +168,17 @@ public class EveryThingGenerator {
         File file = new File(basePath + "\\jsonGeneratedFiles\\Cars.json");
         mapper.writeValue(file, cars);
         //carRepository.save( cars );
+    }
+
+    /*=============== Car Owner ================*/
+    private void loadCarOwners() {
+        generateCarOwners(50);
+        System.out.println("Load car owners complete");
+    }
+
+    private void generateCarOwners(int countPerCar){
+        List<CarOwner> carOwners = new CarOwnerGenerator().generate(countPerCar, carRepository, driverRepository);
+        carOwnerRepository.save(carOwners);
     }
 
     /*=============== Status Car ===============*/

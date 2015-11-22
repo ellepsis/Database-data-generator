@@ -4,6 +4,7 @@ import com.ellepsis.databaseGenerator.Entity.*;
 import com.ellepsis.databaseGenerator.Repository.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class OrdersGenerator {
         if (taxiOrder.getOrderComment() != null && taxiOrder.getOrderComment().length() > 254)
             taxiOrder.setOrderComment(taxiOrder.getOrderComment().substring(0, 254));
         if (taxiOrder.getStartPoint().length() > 254)
-            taxiOrder.setStartPointId(taxiOrder.getStartPoint().substring(0, 254));
+            taxiOrder.setStartPoint(taxiOrder.getStartPoint().substring(0, 254));
     }
 
     public List<TaxiOrder> listRepair(List<TaxiOrder> taxiOrders, CarRepository carRepository,
@@ -67,6 +68,9 @@ public class OrdersGenerator {
             taxiOrder.setDriverId(drivers.get(r.nextInt(drivers.size())));
             taxiOrder.setPhoneId(clientPhones.get(r.nextInt(clientPhones.size())));
             taxiOrder.setStatusOrderId(statusOrders.get(r.nextInt(statusOrders.size())));
+            long endCost = taxiOrder.getCost() -
+                    (long)(taxiOrder.getCost()*taxiOrder.getClientId().getClientType().getDiscount().floatValue()*0.01);
+            taxiOrder.setEndCost(endCost);
         }
         return taxiOrders;
     }

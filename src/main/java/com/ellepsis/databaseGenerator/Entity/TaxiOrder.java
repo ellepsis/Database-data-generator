@@ -54,6 +54,9 @@ public class TaxiOrder extends GenericEntity{
     @JoinColumn(name = "Phone_Id")
     private ClientPhone phoneId;
 
+    @Column(name = "END_COST")
+    private Long endCost;
+
     @Column(name = "Cost")
     private Long cost;
 
@@ -104,7 +107,7 @@ public class TaxiOrder extends GenericEntity{
         return startPoint;
     }
 
-    public void setStartPointId(String startPoint) {
+    public void setStartPoint(String startPoint) {
         this.startPoint = startPoint;
     }
 
@@ -146,6 +149,14 @@ public class TaxiOrder extends GenericEntity{
 
     public void setCost(Long cost) {
         this.cost = cost;
+    }
+
+    public Long getEndCost() {
+        return endCost;
+    }
+
+    public void setEndCost(Long endCost) {
+        this.endCost = endCost;
     }
 
     public String getOrderComment() {
