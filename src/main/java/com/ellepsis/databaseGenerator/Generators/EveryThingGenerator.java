@@ -95,9 +95,9 @@ public class EveryThingGenerator {
         //loadCarOwners();
 
         //generateOrders(60000);
-        loadOrders();
+        //loadOrders();
 
-        //dbRepair();
+        dbRepair();
     }
 
     public void dbRepair() throws Exception{

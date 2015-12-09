@@ -48,6 +48,7 @@ public class DriverGenerator {
                         o.getPosition().equals(EmployeesGenerator.directorPosition)).collect(Collectors.toList());
         for (int i = 0; i < drivers.size(); i++) {
             drivers.get(i).setEmployeeId(employees.get(i));
+            drivers.get(i).setId(employees.get(i).getId());
         }
         return drivers;
     }

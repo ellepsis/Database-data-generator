@@ -13,9 +13,7 @@ import java.util.Date;
 public class Driver {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence_driver")
-    @SequenceGenerator(name = "id_Sequence_driver", sequenceName = "S_DRIVER")
-    @Column(name = "ID")
+    @Column(name = "Employee_id", unique = true, nullable = false)
     private Long id;
 
     public Long getId() {

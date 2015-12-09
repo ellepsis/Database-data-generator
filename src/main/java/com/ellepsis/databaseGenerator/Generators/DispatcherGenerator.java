@@ -34,6 +34,7 @@ public class DispatcherGenerator {
                         o.getPosition().equals(EmployeesGenerator.directorPosition)).collect(Collectors.toList());
         for (int i = 0; i < dispatchers.size(); i++){
             dispatchers.get(i).setEmployee(employeeList.get(i));
+            dispatchers.get(i).setId(employeeList.get(i).getId());
         }
         return dispatchers;
     }

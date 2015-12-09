@@ -12,9 +12,7 @@ import javax.persistence.*;
 public class Dispatcher{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence_dispatcher")
-    @SequenceGenerator(name = "id_Sequence_dispatcher", sequenceName = "S_DISPATCHER")
-    @Column(name = "ID")
+    @Column(name = "Employee_id", unique = true, nullable = false)
     private Long id;
 
     public Long getId() {
