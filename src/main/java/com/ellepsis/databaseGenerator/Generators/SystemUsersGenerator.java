@@ -30,11 +30,27 @@ public class SystemUsersGenerator {
             SystemUser[] systemUsersArray = restTemplate.getForObject(uri, SystemUser[].class);
             int k = 0;
             for (int j = systemUsers.size(); j < count; j++) {
+                systemUsersArray[k].setPassword(MD5(systemUsersArray[k].getPassword()));
                 systemUsers.add(systemUsersArray[k++]);
             }
         }
         listRepair(systemUsers, permissionTypeRepository, employeeRepository);
         return systemUsers;
+    }
+
+    public String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString().substring(0, Math.min(sb.length(), 62));
+        } catch (java.security.NoSuchAlgorithmException e) {
+        }
+        return null;
     }
 
     private void setPermission(Employee employee, SystemUser systemUser, List<PermissionType> permissionTypes) {
